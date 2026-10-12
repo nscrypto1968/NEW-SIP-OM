@@ -62,7 +62,8 @@ def _s1(doc):
        [['Particular', 'Detail'],
         ['Company name', 'Hindustan Unilever Limited'],
         ['Corporate identity number',
-         '[ADD: from the MCA master data page of the company]'],
+         'L15140MH1933PLC002030, registered with the Registrar of Companies, '
+         'Mumbai'],
         ['NSE symbol and BSE scrip code', 'HINDUNILVR; BSE 500696'],
         ['Sector and industry',
          'Fast moving consumer goods; household and personal products'],
