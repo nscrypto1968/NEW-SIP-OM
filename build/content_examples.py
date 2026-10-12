@@ -21,8 +21,7 @@ def examples(doc, fig):
         'begins before the market opens and ends after it closes. Table 2.16 '
         'records the sequence as it was followed during the internship, with '
         'the control applied at each stage and the output produced.')
-    doc.para('Table 2.16: Timeline of a dealing-desk day, task by task',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.16: Timeline of a dealing-desk day, task by task')
     doc.table([
         ['Phase', 'Task performed', 'Control applied', 'Output'],
         ['Pre-market', 'Review of news, corporate actions and the derivative '
@@ -69,8 +68,8 @@ def examples(doc, fig):
         'are listed in Table 2.17. They matter because a rejection at this '
         'stage is within the firm\u2019s control and can be resolved by the '
         'desk, whereas a rejection at the exchange cannot.')
-    doc.para('Table 2.17: Pre-trade risk checks applied to an order at the '
-             'member\u2019s server', bold=True, align='left', before=120)
+    doc.table_title('Table 2.17: Pre-trade risk checks applied to an order at the '
+             'member\u2019s server')
     doc.table([
         ['Check', 'What is tested', 'Consequence of failure'],
         ['Client code validity',
@@ -108,8 +107,8 @@ def examples(doc, fig):
         'relationship to an illustrative spot price of Rs. 1,250.00 at a '
         'financing rate of 7 per cent with thirty days to expiry gives the '
         'fair value computed in Table 2.18.')
-    doc.para('Table 2.18: Cost-of-carry fair value of a futures contract '
-             '(illustrative)', bold=True, align='left', before=120)
+    doc.table_title('Table 2.18: Cost-of-carry fair value of a futures contract '
+             '(illustrative)')
     doc.table([
         ['Input or output', 'Symbol', 'Value', 'Basis'],
         ['Spot price', 'S', 'Rs. 1,250.00', 'Illustrative'],
@@ -140,8 +139,8 @@ def examples(doc, fig):
         'is debited from or credited to the client\u2019s ledger the same '
         'evening. Table 2.19 traces the settlement of one long lot of 1,000 '
         'units opened at Rs. 1,257.00 over five trading days.')
-    doc.para('Table 2.19: Five-day mark-to-market settlement on one long lot '
-             '(illustrative)', bold=True, align='left', before=120)
+    doc.table_title('Table 2.19: Five-day mark-to-market settlement on one long lot '
+             '(illustrative)')
     doc.table([
         ['Day', 'Previous settlement price', 'Settlement price',
          'Price change', 'Daily MTM on 1,000 units', 'Cumulative MTM'],
@@ -160,8 +159,8 @@ def examples(doc, fig):
                                                      'r'])
     doc.after_table(0.4)
     fig('fig2_1', 6.1, 2.8, before=120, after=70)
-    doc.para('Figure 2.1: Daily mark-to-market cash flow on the illustrative '
-             'position', bold=True, align='center', size=11.0)
+    doc.caption('Figure 2.1: Daily mark-to-market cash flow on the illustrative '
+             'position')
     para(
         'The five daily flows sum to Rs. 9,000, which is exactly the price '
         'change of Rs. 9.00 multiplied by the lot size of 1,000 units. Daily '
@@ -183,9 +182,8 @@ def examples(doc, fig):
         'Rs. 1,250, is valued in Table 2.20 using the Black-Scholes-Merton '
         'model. Volatility of 28 per cent a year and a risk-free rate of 7 per '
         'cent are assumptions, not observations.')
-    doc.para('Table 2.20: Black-Scholes inputs, computed price and '
-             'sensitivities (illustrative)', bold=True, align='left',
-             before=120)
+    doc.table_title('Table 2.20: Black-Scholes inputs, computed price and '
+             'sensitivities (illustrative)')
     doc.table([
         ['Item', 'Symbol', 'Value', 'Basis'],
         ['Spot price', 'S', 'Rs. 1,250.00', 'Illustrative'],
@@ -216,8 +214,8 @@ def examples(doc, fig):
         'buyer of the call loses the whole premium of Rs. 38,690 if the '
         'underlying is at or below Rs. 1,260 at expiry, and the position turns '
         'profitable only above Rs. 1,298.69.')
-    doc.para('Table 2.21: Payoff of the long call at expiry (illustrative, '
-             'one lot of 1,000 units)', bold=True, align='left', before=120)
+    doc.table_title('Table 2.21: Payoff of the long call at expiry (illustrative, '
+             'one lot of 1,000 units)')
     doc.table([
         ['Underlying at expiry (Rs.)', 'Intrinsic value per unit (Rs.)',
          'Premium paid per unit (Rs.)',
@@ -234,8 +232,8 @@ def examples(doc, fig):
     ], [2600, 2600, 2600, 2666], aligns=['r', 'r', 'r', 'r'])
     doc.after_table(0.4)
     fig('fig2_2', 6.0, 2.8, before=120, after=70)
-    doc.para('Figure 2.2: Payoff of the long call at expiry, with the '
-             'break-even marked', bold=True, align='center', size=11.0)
+    doc.caption('Figure 2.2: Payoff of the long call at expiry, with the '
+             'break-even marked')
     para(
         'Two features of the computation are worth recording because they are '
         'counter-intuitive to a client who is new to options. The first is the '
@@ -268,8 +266,8 @@ def examples(doc, fig):
         'position described above using illustrative percentages, because the '
         'parameters actually applied by the clearing corporation are '
         'proprietary and are revised daily.')
-    doc.para('Table 2.22: Margin build-up on one long futures lot '
-             '(illustrative)', bold=True, align='left', before=120)
+    doc.table_title('Table 2.22: Margin build-up on one long futures lot '
+             '(illustrative)')
     doc.table([
         ['Component', 'Basis', 'Rate', 'Amount (Rs.)'],
         ['Contract value', 'Entry price Rs. 1,257.00 \u00d7 lot of 1,000',
@@ -289,8 +287,8 @@ def examples(doc, fig):
         'which is comfortably above the requirement at entry. Table 2.23 '
         'shows what happens if the underlying falls to Rs. 1,232.00, a fall of '
         '1.99 per cent.')
-    doc.para('Table 2.23: Margin shortfall and square-off scenario '
-             '(illustrative)', bold=True, align='left', before=120)
+    doc.table_title('Table 2.23: Margin shortfall and square-off scenario '
+             '(illustrative)')
     doc.table([
         ['Step', 'Computation', 'Amount (Rs.)'],
         ['Collateral placed by the client', 'Given', '1,75,000'],
@@ -326,8 +324,8 @@ def examples(doc, fig):
         'A trade that shows a profit before costs may show a loss after them. '
         'The first illustration is a delivery round trip of 100 shares bought '
         'and sold at Rs. 1,000 with brokerage at 0.05 per cent on each side.')
-    doc.para('Table 2.24: Charge computation on an illustrative delivery '
-             'round trip', bold=True, align='left', before=120)
+    doc.table_title('Table 2.24: Charge computation on an illustrative delivery '
+             'round trip')
     doc.table([
         ['Charge', 'Rate applied', 'Base', 'Amount (Rs.)'],
         ['Buy value', '100 shares \u00d7 Rs. 1,000', '\u2014', '1,00,000'],
@@ -350,8 +348,7 @@ def examples(doc, fig):
         'The second illustration is an intraday trade of Rs. 5,00,000 bought '
         'and Rs. 5,02,500 sold on the same day, at a flat brokerage of Rs. 20 '
         'for each executed order.')
-    doc.para('Table 2.25: Charge computation on an illustrative intraday trade',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.25: Charge computation on an illustrative intraday trade')
     doc.table([
         ['Charge', 'Rate applied', 'Base', 'Amount (Rs.)'],
         ['Brokerage', 'Rs. 20 per executed order, two orders', '\u2014',
@@ -374,8 +371,8 @@ def examples(doc, fig):
     ], [2900, 2900, 3200, 1466], aligns=['l', 'l', 'l', 'r'])
     doc.after_table(0.4)
     fig('fig2_3', 5.8, 2.8, before=120, after=70)
-    doc.para('Figure 2.3: Composition of the charges on the illustrative '
-             'delivery round trip', bold=True, align='center', size=11.0)
+    doc.caption('Figure 2.3: Composition of the charges on the illustrative '
+             'delivery round trip')
     para(
         'On the delivery round trip the total cost of Rs. 340.25 requires the '
         'share to move Rs. 3.40, or about 0.34 per cent, before the client is '

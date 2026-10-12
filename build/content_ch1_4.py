@@ -6,8 +6,7 @@ from docgen import Doc, BODY_SIZE
 
 def chapter_1(doc, fig=None):
     doc.new_page()
-    doc.para('CHAPTER 1 :- INTRODUCTION', bold=True, align='left')
-    doc.mark('CHAPTER 1 :- INTRODUCTION', 1)
+    doc.chapter('CHAPTER 1 :- INTRODUCTION')
     doc.heading('1.1 NEED OF THE STUDY', 2, '   1.1 Need of the Study')
     for b in [
         'To gain exposure to the corporate world and to the working of a live '
@@ -38,7 +37,7 @@ def chapter_1(doc, fig=None):
         'To develop the discipline of sourcing every figure to a verifiable '
         'document and of separating reported figures from computed figures.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.heading('1.2 OBJECTIVES OF THE STUDY', 2, '   1.2 Objectives of the Study')
     doc.para('The objectives of the study are stated below.', align='both')
@@ -66,7 +65,7 @@ def chapter_1(doc, fig=None):
         'comparative financial analysis of three selected FMCG companies for '
         'the three financial years from FY2023-24 to FY2025-26.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.heading('1.3 SCOPE OF THE STUDY', 2, '   1.3 Scope of the Study')
     doc.para(
@@ -103,12 +102,10 @@ def chapter_1(doc, fig=None):
 
 def chapter_2(doc, fig=None):
     doc.new_page()
-    doc.para('CHAPTER 2 :- ORGANIZATIONAL BACKGROUND', bold=True, align='left')
-    doc.mark('CHAPTER 2 :- ORGANIZATIONAL BACKGROUND', 1)
+    doc.chapter('CHAPTER 2 :- ORGANIZATIONAL BACKGROUND')
 
-    doc.heading('2.1 ORGANISATIONAL INTRODUCTION', 2,
-                '   2.1 Organisational Introduction (Rosy Blue Securities '
-                'Pvt. Ltd.)')
+    doc.heading('2.1 FIRM INTRODUCTION (ROSY BLUE SECURITIES PVT. LTD.)', 2,
+                '   2.1 Firm Introduction (Rosy Blue Securities Pvt. Ltd.)')
     doc.para('About the Firm', bold=True, align='left', before=120)
     doc.para(
         'Rosy Blue Securities Pvt. Ltd. is the organisation at which the '
@@ -117,8 +114,19 @@ def chapter_2(doc, fig=None):
         'with the Securities and Exchange Board of India, holds membership of '
         'a recognised stock exchange and executes transactions in securities '
         'on behalf of clients for a brokerage commission. The firm is a '
-        'private limited company incorporated under the Companies Act.',
-        align='both')
+        'private limited company incorporated on 18 August 1994 in Mumbai, '
+        'and it holds membership of both the National Stock Exchange and the '
+        'Bombay Stock Exchange in the capital market, futures and options '
+        'and currency derivatives segments.', align='both')
+    doc.para(
+        'The firm is the stock broking arm of the Rosy Blue Alliance, a '
+        'privately owned group that has been in business for about sixty '
+        'years and has interests in healthcare, media, renewable energy, '
+        'financial services and retail, in addition to the manufacturing and '
+        'processing of fine commodities. Its registered and corporate office '
+        'is at Mittal Court in Nariman Point, in the fort area of Mumbai that '
+        'holds a large part of the city\u2019s broking and financial services '
+        'activity.', align='both')
     doc.para(
         'A broking firm of this type performs four functions that are '
         'separated for regulatory and control reasons. The dealing function '
@@ -133,39 +141,52 @@ def chapter_2(doc, fig=None):
         'fails a risk check, or a trade that is not reconciled at the close of '
         'the day, becomes an immediate problem for the desk.', align='both')
     doc.para(
-        'The corporate particulars of the firm are a matter of public record '
+        'The corporate particulars of the firm are matters of public record '
         'with the Registrar of Companies, the Securities and Exchange Board of '
-        'India and the exchanges. They have been left for completion from the '
-        'firm\u2019s own certificates rather than reconstructed, because no '
-        'identifier in the table below has been assumed by the author.',
-        align='both')
-    doc.para('Table 2.1: Registration and corporate particulars of the firm',
-             bold=True, align='left', before=120)
+        'India and the two exchanges, and are reproduced in the table below '
+        'from the firm\u2019s own website and from the company master data '
+        'published by the Ministry of Corporate Affairs. Only those entries '
+        'that are not public \u2014 the internal clearing and depository '
+        'arrangements, and the name and e-mail address of the compliance '
+        'officer \u2014 have been left for completion from the firm\u2019s '
+        'own documents.', align='both')
+    doc.table_title('Table 2.1: Registration and corporate particulars of the firm')
     doc.table([
-        ['Particular', 'Entry to be confirmed from the firm\u2019s records'],
-        ['Name of the entity', 'Rosy Blue Securities Pvt. Ltd.'],
-        ['Constitution', 'Private limited company incorporated under the '
-                         'Companies Act, 2013'],
-        ['Year of incorporation', '[ADD: year of incorporation]'],
-        ['Registered office', '[ADD: registered office address]'],
-        ['SEBI stock-broker registration', '[ADD: SEBI registration number, '
-                                           'INZ format]'],
-        ['Other SEBI registrations', '[ADD: research analyst / investment '
-                                      'adviser / depository participant, if '
-                                      'held]'],
-        ['Exchange membership \u2014 NSE', '[ADD: member code and segments, if '
-                                            'a member]'],
-        ['Exchange membership \u2014 BSE', '[ADD: member code and segments, if '
-                                            'a member]'],
-        ['Segments dealt in', '[ADD: cash / equity derivatives / currency / '
-                               'commodity]'],
+        ['Particular', 'Entry'],
+        ['Name of the entity', 'Rosy Blue Securities Pvt. Ltd., formerly Rosy '
+                               'Blue Securities Limited'],
+        ['Constitution', 'Private limited company, limited by shares; '
+                         'registered with the Registrar of Companies, Mumbai'],
+        ['Corporate identity number', 'U65990MH1994PTC080450; registration '
+                                      'number 080450'],
+        ['Date of incorporation', '18 August 1994'],
+        ['Registered office', '154-C, 15th Floor, Mittal Court, Vidhan Bhavan '
+                              'Marg, Nariman Point, Mumbai 400021, Maharashtra'],
+        ['SEBI stock-broker registration', 'INZ000221531'],
+        ['Exchange membership \u2014 NSE', 'Member code 07218: capital market, '
+                                            'futures and options, currency '
+                                            'derivatives'],
+        ['Exchange membership \u2014 BSE', 'Member code 0183: capital market, '
+                                            'futures and options, currency '
+                                            'derivatives'],
+        ['Mutual fund distribution', 'Empanelled with the Association of Mutual '
+                                     'Funds in India since 2012; ARN 86208'],
+        ['Authorised and paid-up capital', 'Rs. 13.00 crore authorised; '
+                                           'Rs. 2.10 crore paid up'],
+        ['Website, e-mail and telephone', 'rosybluesecurities.co.in; '
+                                          'admin@rosyblue.co.in; '
+                                          '+91 22 6768111'],
         ['Clearing arrangement', '[ADD: self-clearing or through a named '
                                   'clearing member]'],
         ['Depository participation', '[ADD: CDSL / NSDL registration, or '
                                      '\u2018not a depository participant\u2019]'],
-        ['Investor grievance channel', '[ADD: e-mail address and SCORES '
-                                        'registration details]'],
-    ], [3600, 6866], aligns=['l', 'l'])
+        ['Investor grievance channel', 'Addressed to the firm; the contact '
+                                       'particulars of the compliance officer '
+                                       'are displayed at its office as '
+                                       'required by the exchanges. [ADD: name '
+                                       'and e-mail address of the compliance '
+                                       'officer]'],
+    ], [3700, 6766], aligns=['l', 'l'])
     doc.after_table(0.4)
     doc.para(
         'The registration and membership profile determines the boundary of '
@@ -179,28 +200,37 @@ def chapter_2(doc, fig=None):
         'formality but the first thing a new dealer should read, because it '
         'defines the permissible universe of instructions.', align='both')
 
-    doc.heading('2.2 DIRECTORS AND KEY MANAGEMENT PERSONNEL', 2,
-                '   2.2 Directors and Key Management Personnel')
+    doc.heading('2.2 PARTNERS PROFILE', 2, '   2.2 Partners Profile')
     doc.para(
         'The management of a broking firm is organised around the separation '
         'of business development from risk acceptance. The board determines '
         'the risk appetite of the firm, the compliance officer is responsible '
         'for registration, reporting and surveillance, and the heads of the '
         'dealing, risk management and back-office functions are accountable '
-        'for the daily operation of that framework. The particulars of the '
-        'individuals holding these offices at Rosy Blue Securities Pvt. Ltd. '
-        'are to be reproduced from the firm\u2019s records and from its '
-        'annual filings.', align='both')
-    doc.para('Table 2.2: Directors and key management personnel of the firm',
-             bold=True, align='left', before=120)
+        'for the daily operation of that framework.', align='both')
+    doc.para(
+        'Rosy Blue Securities Pvt. Ltd. is a private limited company, so the '
+        'profile that a partnership firm would present as its partners is '
+        'presented here as its board of directors and key managerial '
+        'personnel. The three directors are named in the master data of the '
+        'Ministry of Corporate Affairs, together with the dates from which '
+        'they hold office; the functional heads are internal appointments and '
+        'have been left for completion from the firm\u2019s own documents.',
+        align='both')
+    doc.table_title('Table 2.2: Partners (directors and key personnel) of the firm')
     doc.table([
         ['Designation', 'Name and particulars'],
-        ['Director', '[ADD: name of director]'],
-        ['Director', '[ADD: name of director]'],
+        ['Director', 'Bimal Jayant Parekh; DIN 00060885; in office since '
+                     '30 December 1996'],
+        ['Director', 'Sushil Chandravadan Choksey; DIN 00207881; in office '
+                     'since 15 March 2000'],
+        ['Director', 'Shilpa Narendra Hirani; DIN 00060981; in office since '
+                     '15 March 2000'],
         ['Chief Executive Officer or Managing Director',
          '[ADD: name and designation]'],
-        ['Compliance Officer', '[ADD: name, qualification and SEBI '
-                                'registration, if any]'],
+        ['Compliance Officer', '[ADD: name and e-mail address of the '
+                                'compliance officer, as displayed at the '
+                                'firm\u2019s office]'],
         ['Head of Dealing', '[ADD: name and designation of the reporting '
                              'senior for the dealing desk]'],
         ['Head of Risk Management', '[ADD: name and designation]'],
@@ -209,19 +239,23 @@ def chapter_2(doc, fig=None):
     doc.after_table(0.4)
     doc.para(
         'The intern reported to the head of the dealing function and worked '
-        'under the supervision of a registered dealer. No names have been '
-        'assumed in this chapter: every entry that is not a matter of public '
-        'record has been marked for completion from the firm\u2019s own '
-        'documents.', align='both')
+        'under the supervision of a registered dealer. No name has been '
+        'assumed in this chapter: the three directors are a matter of public '
+        'record, and every other entry has been marked for completion from '
+        'the firm\u2019s own documents.', align='both')
 
     doc.heading('2.3 ARRAY OF SERVICES', 2, '   2.3 Array of Services')
     doc.para(
-        'The service range of a retail-facing broking firm is set out below. '
-        'The entries marked for confirmation should be verified against the '
-        'firm\u2019s own service brochure and its exchange membership '
-        'certificates before submission. [ADD: confirm the list of services '
-        'actually offered by the firm and delete any that are not offered.]',
-        align='both')
+        'The firm describes two services on its own website: stock broking, '
+        'in the capital market, futures and options and currency derivatives '
+        'segments of both the National Stock Exchange and the BSE, and mutual '
+        'fund distribution, in which it has been empanelled with the '
+        'Association of Mutual Funds in India since 2012 as an associate '
+        'distributor bearing ARN 86208. The wider range set out below is the '
+        'range that a broking firm of this size ordinarily offers, and the '
+        'entries that the firm does not advertise have been identified as '
+        'such, so that no service is claimed on the firm\u2019s behalf that '
+        'it does not in fact offer.', align='both')
     doc.para('Secondary Market Broking', bold=True, align='left', before=120)
     doc.para(
         'Execution of buy and sell orders in the equity cash segment on behalf '
@@ -230,8 +264,9 @@ def chapter_2(doc, fig=None):
         'and settlement through the clearing corporation.', align='both')
     doc.para('Derivatives Broking', bold=True, align='left', before=120)
     doc.para(
-        'Execution in equity futures and options, subject to the client having '
-        'completed the additional documentation required for the segment, '
+        'Execution in equity futures and options, and in currency derivatives, '
+        'subject to the client having completed the additional documentation '
+        'required for the segment, '
         'having been assigned a unique client code valid for derivatives, and '
         'having placed the margin required for the position.', align='both')
     doc.para('Depository Services', bold=True, align='left', before=120)
@@ -239,14 +274,26 @@ def chapter_2(doc, fig=None):
         'Holding of client securities in dematerialised form where the firm is '
         'a depository participant, together with pledge and re-pledge '
         'instructions for collateral, delivery instructions and corporate '
-        'action processing.', align='both')
+        'action processing. This service is not advertised on the '
+        'firm\u2019s website, and the firm\u2019s depository registration, '
+        'if any, is to be confirmed from its records.', align='both')
+    doc.para('Mutual Fund Distribution', bold=True, align='left', before=120)
+    doc.para(
+        'Distribution of mutual fund schemes as an associate distributor '
+        'registered with the Association of Mutual Funds in India, which is '
+        'the second of the two services the firm advertises. The firm states '
+        'on its website that these are not exchange-traded products and that '
+        'disputes relating to the distribution activity do not have access to '
+        'the exchange investor redressal forum or the arbitration mechanism.',
+        align='both')
     doc.para('Research and Advisory', bold=True, align='left', before=120)
     doc.para(
         'Dissemination of research output and advisory communication, which '
-        'may be undertaken only to the extent permitted by the firm\u2019s '
-        'registration as a research analyst or investment adviser under the '
-        'regulations of the Securities and Exchange Board of India.',
-        align='both')
+        'may be undertaken only to the extent permitted by registration as a '
+        'research analyst or an investment adviser under the regulations of '
+        'the Securities and Exchange Board of India. No such registration is '
+        'shown in the particulars published by the firm, and no research '
+        'report of the firm has been relied on in this report.', align='both')
     doc.para('Client Servicing and Support', bold=True, align='left', before=120)
     doc.para(
         'Client registration and know-your-customer verification, ledger and '
@@ -256,15 +303,32 @@ def chapter_2(doc, fig=None):
 
     doc.heading('2.4 VISION', 2, '   2.4 Vision')
     doc.para(
-        '[ADD: reproduce the firm\u2019s published vision statement here. If '
-        'the firm does not publish one, delete this section and renumber the '
-        'sections that follow, together with the corresponding entry in the '
-        'index.]', align='both')
+        'The firm states its objective on its website in these words:  '
+        '\u201cTo follow highest standards of ethics and compliances while '
+        'facilitating the trading by clients in securities in a fair and '
+        'transparent manner, so as to contribute in creation of wealth for '
+        'investors.\u201d  Read in the light of the internship, the statement '
+        'places compliance before volume and the client\u2019s interest '
+        'before the firm\u2019s turnover. That ordering is visible on the '
+        'dealing desk: an order that fails a risk check is not released '
+        'because a client is insistent, and a trade that does not reconcile '
+        'at the close of the day is investigated the same evening rather than '
+        'the next morning.', align='both')
 
     doc.heading('2.5 MISSION', 2, '   2.5 Mission')
     doc.para(
-        '[ADD: reproduce the firm\u2019s published mission statement here, on '
-        'the same basis as the preceding section.]', align='both')
+        'The firm does not publish a separate mission statement, so nothing '
+        'is quoted here that it has not said. What it does publish is the '
+        'list of services through which it intends to work: stock broking in '
+        'the capital market, futures and options and currency derivatives '
+        'segments of both national exchanges, and the distribution of mutual '
+        'fund schemes as an associate distributor since 2012. Read with the '
+        'objective quoted above, the mission may fairly be described as '
+        'providing exchange-traded execution and third-party fund '
+        'distribution to its clients within the limits of its registrations, '
+        'and keeping the compliance and risk functions that those activities '
+        'require. Any fuller statement is to be taken from the firm '
+        'itself.', align='both')
 
     doc.heading('2.6 DEPARTMENTS', 2, '   2.6 Departments')
     doc.para(
@@ -273,8 +337,8 @@ def chapter_2(doc, fig=None):
         'written from the point of view of the desk, which is the reason the '
         'last column records the interaction rather than the internal '
         'hierarchy of the department concerned.', align='both')
-    doc.para('Table 2.3: Departments of a broking firm and their principal '
-             'functions', bold=True, align='left', before=120)
+    doc.table_title('Table 2.3: Departments of a broking firm and their principal '
+             'functions')
     doc.table([
         ['Department', 'Principal functions',
          'Interaction with the dealing desk'],
@@ -317,11 +381,18 @@ def chapter_2(doc, fig=None):
     doc.para(
         'The intern was attached to the equity dealing desk in the capacity of '
         'an Equity Dealer for the period [ADD: internship start date] to '
-        '[ADD: internship end date], working [ADD: working hours] and '
-        'reporting to the head of the dealing function. The segments handled '
-        'were [ADD: cash / equity derivatives / both] and the client '
-        'categories dealt with were [ADD: retail / high net-worth / '
-        'sub-broker \u2014 categories only]. All order entry was carried out '
+        '[ADD: internship end date], reporting to the head of the dealing '
+        'function. The desk works the exchange trading day, which begins with '
+        'the pre-open session at 09:00 hours and ends with the close of the '
+        'market at 15:30 hours, with reconciliation after the close; the '
+        'firm\u2019s own shift timings are [ADD: working hours as per the '
+        'firm\u2019s records]. Because the firm holds membership of the '
+        'capital market, futures and options and currency derivatives '
+        'segments of both exchanges, the segments on the desk are the cash '
+        'segment and the equity derivatives segment, the latter for clients '
+        'who have been enabled for it. The client categories dealt with were '
+        '[ADD: retail / high net-worth / sub-broker \u2014 categories only]. '
+        'All order entry was carried out '
         'under the supervision of a registered dealer, and no instruction was '
         'executed without a recorded client instruction and a confirmed '
         'limit.', align='both')
@@ -353,13 +424,12 @@ def chapter_2(doc, fig=None):
         'firm\u2019s compliance policy, including the record of instructions '
         'received by telephone.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para(
         'The responsibilities fell into three time bands, corresponding to the '
         'periods before, during and after the continuous trading session, and '
         'are set out in Table 2.4.', align='both')
-    doc.para('Table 2.4: Indicative working day of an equity dealer',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.4: Indicative working day of an equity dealer')
     doc.table([
         ['Time', 'Activity', 'Purpose'],
         ['08:45 \u2013 09:00', 'Review of overnight news, corporate actions, '
@@ -416,7 +486,7 @@ def chapter_2(doc, fig=None):
         'instructions, retained as evidence of the instruction in accordance '
         'with the firm\u2019s compliance policy.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.heading('2.8 LEARNING ACTIVITIES FROM ORGANISATION', 2,
                 '   2.8 Learning Activities from Organisation')
@@ -458,8 +528,7 @@ def _learning(doc, fig=None):
         'corporation that arise within a fixed number of days regardless of '
         'whether the client pays. That asymmetry is the origin of the margin '
         'framework described later in this section.')
-    doc.para('Table 2.5: Primary market and secondary market compared',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.5: Primary market and secondary market compared')
     doc.table([
         ['Basis', 'Primary market', 'Secondary market'],
         ['Nature of transaction', 'Issue of new securities',
@@ -512,8 +581,7 @@ def _learning(doc, fig=None):
         'contracts, they are the benchmark against which a client judges '
         'performance, and index levels define the market-wide circuit '
         'breakers that halt trading after specified falls.')
-    doc.para('Table 2.6: Market participants and their role',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.6: Market participants and their role')
     doc.table([
         ['Participant', 'Role in the market',
          'Point of contact with the dealing desk'],
@@ -557,8 +625,8 @@ def _learning(doc, fig=None):
         'relevant to a dealing desk. For a dealer the binding instruction on '
         'any given day is usually the most recent circular rather than the '
         'parent regulation, and circulars change frequently.')
-    doc.para('Table 2.7: Principal statutes and regulations governing stock '
-             'broking', bold=True, align='left', before=120)
+    doc.table_title('Table 2.7: Principal statutes and regulations governing stock '
+             'broking')
     doc.table([
         ['Instrument', 'Principal subject matter',
          'Relevance to the dealing desk'],
@@ -618,8 +686,7 @@ def _learning(doc, fig=None):
         'Indicative timings are set out in Table 2.8; the precise timings are '
         'notified by the exchanges and should be confirmed against the current '
         'exchange notice.')
-    doc.para('Table 2.8: Equity trading sessions and indicative timings',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.8: Equity trading sessions and indicative timings')
     doc.table([
         ['Session', 'Indicative timing', 'What happens'],
         ['Pre-open order collection', '09:00 \u2013 09:08',
@@ -640,8 +707,7 @@ def _learning(doc, fig=None):
         'in which each was used during the internship, are set out in Table '
         '2.9. [ADD: confirm the order types actually used and delete any that '
         'were not.]')
-    doc.para('Table 2.9: Order types and the situation calling for each',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.9: Order types and the situation calling for each')
     doc.table([
         ['Order type', 'Validity', 'Situation in which it was used'],
         ['Limit order', 'Day',
@@ -663,8 +729,7 @@ def _learning(doc, fig=None):
         'state either narrows or closes the dealer\u2019s discretion, and the '
         'whole of a dealer\u2019s judgement therefore lies between acceptance '
         'and execution.')
-    doc.para('Table 2.10: Order states from entry to trade confirmation',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.10: Order states from entry to trade confirmation')
     doc.table([
         ['State', 'What has happened', 'What the dealer can still do'],
         ['Instruction received', 'The client instruction has been captured and '
@@ -712,8 +777,7 @@ def _learning(doc, fig=None):
         '2.11. The compression of the cycle is one of the reasons the '
         'operational discipline of the desk matters: there is no window in '
         'which a shortfall can be corrected by waiting.')
-    doc.para('Table 2.11: Rolling settlement timeline under the T+1 cycle',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.11: Rolling settlement timeline under the T+1 cycle')
     doc.table([
         ['Stage', 'Day', 'What happens'],
         ['Trade day', 'T',
@@ -754,8 +818,7 @@ def _learning(doc, fig=None):
         'Table 2.12. The rates themselves change and are notified by the '
         'exchange and the clearing corporation; the percentages shown are '
         'indicative and marked to be verified.')
-    doc.para('Table 2.12: Principal components of margin by segment',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.12: Principal components of margin by segment')
     doc.table([
         ['Segment', 'Component', 'What it covers'],
         ['Cash market', 'Value at risk (VaR) margin',
@@ -862,8 +925,8 @@ def _learning(doc, fig=None):
         'into the member\u2019s server and routed to the exchange from there, '
         'with the member\u2019s own pre-trade risk controls applied on the way. '
         'The two are compared in Table 2.13.')
-    doc.para('Table 2.13: The exchange terminal and the Computer-to-Computer '
-             'Link facility compared', bold=True, align='left', before=120)
+    doc.table_title('Table 2.13: The exchange terminal and the Computer-to-Computer '
+             'Link facility compared')
     doc.table([
         ['Basis of comparison', 'Exchange-provided terminal',
          'Computer-to-Computer Link facility'],
@@ -907,8 +970,7 @@ def _learning(doc, fig=None):
         'change from time to time; the percentages and amounts shown below are '
         'the rates applied during the internship and are marked to be '
         'reconfirmed before submission.')
-    doc.para('Table 2.14: Statutory charges and transaction costs on a trade',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.14: Statutory charges and transaction costs on a trade')
     doc.table([
         ['Component', 'Levied on', 'Borne by', 'Nature'],
         ['Brokerage', 'Turnover of the trade', 'Client',
@@ -951,8 +1013,7 @@ def _learning(doc, fig=None):
         'desk is through the imposition of additional margins, price bands and '
         'restrictions on the securities under surveillance. Table 2.15 sets '
         'out the principal frameworks and their operational effect.')
-    doc.para('Table 2.15: Surveillance frameworks and their effect on trading',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 2.15: Surveillance frameworks and their effect on trading')
     doc.table([
         ['Framework', 'What it covers', 'Effect at the dealing desk'],
         ['Price bands', 'A permitted range of price movement around the '

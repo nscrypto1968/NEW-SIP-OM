@@ -6,9 +6,7 @@ from docgen import Doc, BODY_SIZE
 
 def chapter_3(doc, fig):
     doc.new_page()
-    doc.para('CHAPTER 3 :- FUNDAMENTAL ANALYSIS (FMCG SECTOR OVERVIEW)',
-             bold=True, align='left')
-    doc.mark('CHAPTER 3 :- FUNDAMENTAL ANALYSIS (FMCG SECTOR OVERVIEW)', 1)
+    doc.chapter('CHAPTER 3 :- FUNDAMENTAL ANALYSIS - SECTOR OVERVIEW')
     doc.para(
         'Fundamental analysis begins with the industry in which a company '
         'operates, because the industry determines the range of outcomes that '
@@ -46,8 +44,7 @@ def chapter_3(doc, fig):
         'dealer on a broking desk regularly handles client interest in exactly '
         'these securities.')
     fig('fig3_1', 6.0, 2.9, before=140, after=80)
-    doc.para('Figure 3.1: Indian FMCG market size, 2025 and 2030 (projected)',
-             bold=True, align='center', size=11.0)
+    doc.caption('Figure 3.1: Indian FMCG market size, 2025 and 2030 (projected)')
     para(
         'The projection above, which is the published industry estimate, '
         'implies that the market roughly doubles over five years. The figure '
@@ -69,8 +66,7 @@ def chapter_3(doc, fig):
         'premiumisation. The balance between the two is therefore one of the '
         'most important variables in any forecast of the sector.')
     fig('fig3_2', 5.6, 2.6, before=140, after=80)
-    doc.para('Figure 3.2: Urban and rural share of Indian FMCG sales',
-             bold=True, align='center', size=11.0)
+    doc.caption('Figure 3.2: Urban and rural share of Indian FMCG sales')
     para(
         'The split matters for interpretation of company performance. Two '
         'companies of similar size can report very different growth in the '
@@ -119,7 +115,7 @@ def chapter_3(doc, fig):
         'manufacturing capacity in premium segments and ITC\u2019s plan of '
         'about Rs. 20,000 crore over the next five to six years.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.heading('3.2 INDUSTRY-WIDE ADVANTAGES & DISADVANTAGES', 2,
                 '   3.2 Industry-Wide Advantages & Disadvantages')
@@ -147,7 +143,7 @@ def chapter_3(doc, fig):
         'requires comparatively modest capital expenditure to maintain '
         'existing capacity.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para('Disadvantages', bold=True, align='left', before=160)
     for b in [
         'Exposure to input cost inflation: the principal raw materials are '
@@ -175,7 +171,7 @@ def chapter_3(doc, fig):
         'metrology, and a single quality or labelling failure can damage a '
         'brand across its entire category.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.heading('3.3 SECTOR CHALLENGES', 2, '   3.3 Sector Challenges')
     para(
@@ -217,7 +213,7 @@ def chapter_3(doc, fig):
         'product in several categories, which increases the fixed component of '
         'the cost structure.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.heading('3.4 TOP 10 INDIAN FMCG COMPANIES OVERVIEW', 2,
                 '   3.4 Top 10 Indian FMCG Companies Overview')
@@ -229,8 +225,7 @@ def chapter_3(doc, fig):
         'market capitalisation would place companies of very different '
         'business models next to each other without explaining the '
         'difference.')
-    doc.para('Table 3.1: Leading listed companies in the Indian FMCG sector',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 3.1: Leading listed companies in the Indian FMCG sector')
     doc.table([
         ['Sr. No.', 'Company name', 'Principal segment',
          'Core position in the sector'],
@@ -297,8 +292,7 @@ def chapter_3(doc, fig):
 
 def chapter_4(doc):
     doc.new_page()
-    doc.para('CHAPTER 4 :- RESEARCH METHODOLOGY', bold=True, align='left')
-    doc.mark('CHAPTER 4 :- RESEARCH METHODOLOGY', 1)
+    doc.chapter('CHAPTER 4 :- RESEARCH METHODOLOGY')
 
     doc.heading('4.1 RESEARCH DESIGN & OBJECTIVES', 2,
                 '   4.1 Research Design & Objectives')
@@ -340,10 +334,10 @@ def chapter_4(doc):
         'reported figures of one of the selected companies, and to state '
         'clearly the basis on which the comparison has been made.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.heading('4.2 SCOPE & SOURCES OF DATA', 2,
-                '   4.2 Scope and Sources of Data')
+                '   4.2 Scope & Sources of Data')
     doc.para(
         'The study is based mainly on secondary data. Financial information '
         'has been collected from audited annual financial statements, the '
@@ -375,7 +369,7 @@ def chapter_4(doc):
         'Company websites, for business descriptions, product portfolios, '
         'history and management information.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para(
         'Primary data consists of the author\u2019s own structured observation '
         'of the dealing desk during the internship, including the sequence of '
@@ -387,7 +381,7 @@ def chapter_4(doc):
         'constructed by the author and labelled as illustrative.', align='both')
 
     doc.heading('4.3 SAMPLE SELECTION & PERIOD OF STUDY', 2,
-                '   4.3 Sample Selection and Period of Study')
+                '   4.3 Sample Selection & Period of Study')
     doc.para(
         'The study uses purposive sampling for the selection of the companies. '
         'Three companies were selected because they represent three distinct '
@@ -408,7 +402,7 @@ def chapter_4(doc):
         'segment of the FMCG sector, so that the comparison is not confined '
         'to a single product category.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para('Name of the companies selected:', bold=True, align='left',
              before=120)
     for b in [
@@ -419,7 +413,7 @@ def chapter_4(doc):
         'Dabur India Ltd. \u2014 Ayurvedic and natural healthcare, personal '
         'care and foods.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para(
         'A fourth company, Nestl\u00e9 India Ltd., was considered and '
         'excluded. The company changed its financial year end from December to '
@@ -478,7 +472,7 @@ def chapter_4(doc):
         'actual order flow, so every quantitative example in the operational '
         'part of the report is illustrative rather than observed.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para(
         'Four safeguards were adopted with regard to data. First, no '
         'client-identifying information appears anywhere in this report. '

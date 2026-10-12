@@ -6,9 +6,7 @@ from docgen import Doc
 
 def chapter_7(doc, fig):
     doc.new_page()
-    doc.para('CHAPTER 7 :- CONCLUSION, FINDINGS & SUGGESTIONS', bold=True,
-             align='left')
-    doc.mark('CHAPTER 7 :- CONCLUSION, FINDINGS & SUGGESTIONS', 1)
+    doc.chapter('CHAPTER 7 :- CONCLUSION, FINDINGS & SUGGESTIONS')
     para = lambda t, **kw: doc.para(t, align='both', **kw)
 
     doc.para('CONCLUSION :-', bold=True, align='left', before=100)
@@ -214,8 +212,8 @@ def chapter_7(doc, fig):
         'earnings that will be produced in the future rather than on those '
         'that have been produced in the past.')
     fig('fig7_1', 6.2, 3.0, before=160, after=70)
-    doc.para('Figure 7.1: Composite factor analysis score of the three '
-             'companies (out of 130)', bold=True, align='center', size=11.0)
+    doc.caption('Figure 7.1: Composite factor analysis score of the three '
+             'companies (out of 130)')
 
     doc.para('SUGGESTIONS', bold=True, align='left', before=180)
     doc.para('1.  Suggestions for Hindustan Unilever Ltd.', bold=True,
@@ -242,7 +240,7 @@ def chapter_7(doc, fig):
         'years. The absence of debt means that this is not a risk of default, '
         'but the trend in working capital should be monitored.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para('2.  Suggestions for Britannia Industries Ltd.', bold=True,
              align='left', before=120)
     for b in [
@@ -266,7 +264,7 @@ def chapter_7(doc, fig):
         'network and raise the value of each delivery without requiring a new '
         'one.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para('3.  Suggestions for Dabur India Ltd.', bold=True, align='left',
              before=120)
     for b in [
@@ -296,7 +294,7 @@ def chapter_7(doc, fig):
         'coincided with a fall in profit rather than with a rise in '
         'borrowings.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para('4.  Suggestions for Investors', bold=True, align='left',
              before=120)
     for b in [
@@ -327,7 +325,7 @@ def chapter_7(doc, fig):
         'valuation at which the shares are available, before any investment '
         'decision is taken.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para('5.  Suggestions Arising from the Internship', bold=True,
              align='left', before=120)
     for b in [
@@ -356,4 +354,4 @@ def chapter_7(doc, fig):
         'than the client expects, and this is the root of most disputes about '
         'margin calls.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)

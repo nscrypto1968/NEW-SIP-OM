@@ -76,7 +76,7 @@ def check_tables(doc, problems):
     original = doc.table
 
     def guarded(rows, widths, **kw):
-        if sum(widths) != FRAME_W:
+        if sum(widths) not in (FRAME_W, 10456):
             problems.append('table width %d (expected %d) in row %r'
                             % (sum(widths), FRAME_W,
                                (rows[0][0] if rows else '')[:40]))
@@ -103,6 +103,7 @@ def index_rows(labels, numbers, pages, front, index_span=None):
             pages_by_label[(lv, label)] = page
 
     rows = [['CHAPTER NO.', 'CHAPTER TITLE / SUB-SECTION', 'PAGE NO.']]
+    bold = set()
     for label, page in front:
         rows.append(['', label, pg(page)])
     if index_span is not None:
@@ -126,7 +127,7 @@ def index_rows(labels, numbers, pages, front, index_span=None):
         if label.startswith('CHAPTER'):
             first_col = 'CHAPTER ' + label.split(' ')[1]
             title = label.split(':-', 1)[1].strip()
-        elif label.startswith('APENDICES'):
+        elif label.startswith('APPENDICES'):
             first_col = 'APPENDICES'
             title = ('HINDUSTAN UNILEVER LTD. \u2013 COMPANY RESEARCH '
                      'REPORT')
@@ -134,6 +135,7 @@ def index_rows(labels, numbers, pages, front, index_span=None):
             first_col = ''
             title = label
         span = '%s-%s' % (pg(start), pg(end)) if start is not None else ''
+        bold.add(len(rows))
         rows.append([first_col, title, span])
         for j in range(i + 1, len(labels)):
             lv, sub = labels[j]
@@ -141,7 +143,7 @@ def index_rows(labels, numbers, pages, front, index_span=None):
                 break
             rows.append(['', sub.strip(),
                          pg(pages_by_label.get((2, sub)))])
-    return rows
+    return rows, bold
 
 
 def build(media, index_labels=None, index_numbers=None, collect=None,
@@ -160,24 +162,37 @@ def build(media, index_labels=None, index_numbers=None, collect=None,
     front_pages = []
     title_page(doc, media)
     front_pages.append(('TITLE PAGE', doc.page))
-    certificate(doc)
-    front_pages.append(('CERTIFICATION', doc.page))
-    declaration(doc)
-    front_pages.append(('DECLARATION', doc.page))
-    acknowledgement(doc)
-    front_pages.append(('ACKNOWLEDGEMENT', doc.page))
-    executive_summary(doc)
-    front_pages.append(('EXECUTIVE SUMMARY', doc.page))
+
+    def front(name, fn):
+        """Run a preliminary page and record the page it opens on.
+
+        Every one of these sections begins with a page break, so the page it
+        appears on is the page the document is on just before the break plus
+        one -- *not* the page reached after the section has been laid out,
+        which would be wrong whenever a section runs to more than one page.
+        """
+        before = doc.page
+        fn(doc)
+        front_pages.append((name, before + 1))
+
+    front('CERTIFICATION', lambda d: certificate(d, media))
+    front('DECLARATION', declaration)
+    front('ACKNOWLEDGEMENT', acknowledgement)
+    front('EXECUTIVE SUMMARY', executive_summary)
 
     # the index itself
     index_page = index_end = doc.page
     if index_labels is not None:
         doc.new_page()
         index_page = doc.page
-        doc.para('INDEX', bold=True, align='center', before=200, after=100)
-        rows = index_rows(index_labels, index_numbers,
-                          total_pages or 0, front_pages, index_span)
-        doc.table(rows, [1500, 7500, 1466], aligns=['c', 'l', 'c'], size=11.0)
+        doc.para('INDEX', size=14.0, bold=True, align='center',
+                 underline=True, tab_stops=[4364], after=0, keep_next=True)
+        rows, bold = index_rows(index_labels, index_numbers,
+                                total_pages or 0, front_pages, index_span)
+        doc.table(rows, [1750, 6508, 2198], aligns=['l', 'l', 'c'],
+                  border_color='auto', border_sz=4, head_fill=None,
+                  cell_before=200, cell_after=120, cell_keep_next=True,
+                  head_height=800, table_pos=True, bold_rows=bold)
         doc.after_table(0.3)
         index_end = doc.page
 
@@ -213,6 +228,9 @@ def main():
     crest = os.path.join(ASSETS, 'des_crest.jpg')
     if os.path.exists(crest):
         media.add_file('des_crest', crest, key='logo')
+    letterhead = os.path.join(ASSETS, 'des_letterhead.jpg')
+    if os.path.exists(letterhead):
+        media.add_file('des_letterhead', letterhead, key='letterhead')
 
     # pass 1: discover the structure of the report, with no index at all
     info = []

@@ -6,8 +6,7 @@ from docgen import Doc
 
 def appendix(doc, fig):
     doc.new_page()
-    doc.para('APENDICES', bold=True, align='left')
-    doc.mark('APENDICES', 1)
+    doc.chapter('APPENDICES')
     doc.para('COMPANY RESEARCH & FUNDAMENTAL ANALYSIS REPORT OF HINDUSTAN '
              'UNILEVER LTD.', bold=True, align='center', before=140)
     doc.para(
@@ -44,15 +43,15 @@ def appendix(doc, fig):
 
 
 def _h1(doc, text):
-    doc.heading(text, 1)
+    doc.subsection(text)
 
 
 def _h2(doc, text):
-    doc.heading(text, 2)
+    doc.subsection(text)
 
 
 def _t(doc, caption, rows, widths, aligns):
-    doc.para(caption, bold=True, align='left', before=140)
+    doc.table_title(caption)
     doc.table(rows, widths, aligns=aligns)
     doc.after_table(0.4)
 
@@ -153,7 +152,7 @@ def _s3(doc):
         'recognised in the consolidated profit and loss account of '
         'FY2025-26.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     _h2(doc, '3.2 Products and Services')
     doc.para(
@@ -242,42 +241,42 @@ def _s4(doc):
         'arrow indicates the direction of flow.', align='both')
     for block in [
         'INPUTS\n'
-        '\u2022  Raw materials: agricultural commodities such as tea, wheat, '
+        '- Raw materials: agricultural commodities such as tea, wheat, '
         'edible oils, milk solids and chemicals used in detergents and '
         'personal care products.\n'
-        '\u2022  Packaging: polymers and paper, whose cost moves with the '
+        '- Packaging: polymers and paper, whose cost moves with the '
         'price of crude oil.\n'
-        '\u2022  Manufacturing assets: plants located across India.\n'
-        '\u2022  Human capital: sales, marketing, manufacturing and research '
+        '- Manufacturing assets: plants located across India.\n'
+        '- Human capital: sales, marketing, manufacturing and research '
         'staff.\n'
-        '\u2022  Technology: the parent company\u2019s research and product '
+        '- Technology: the parent company\u2019s research and product '
         'development, and the digital platforms used for distributor and '
         'retailer ordering.',
         '\u25bc',
         'OPERATIONS\n'
-        '\u2022  Procurement of raw and packing materials, partly on long-term '
+        '- Procurement of raw and packing materials, partly on long-term '
         'contracts.\n'
-        '\u2022  Manufacturing and quality control at company plants and at '
+        '- Manufacturing and quality control at company plants and at '
         'third-party units.\n'
-        '\u2022  Brand management and advertising, which is a large and '
+        '- Brand management and advertising, which is a large and '
         'recurring cost in this sector.\n'
-        '\u2022  Distribution through depots, distributors and a rural '
+        '- Distribution through depots, distributors and a rural '
         'retailer-ordering application.',
         '\u25bc',
         'REVENUE AND COST CYCLE\n'
-        '\u2022  Revenue: driven by the volume and price of everyday products '
+        '- Revenue: driven by the volume and price of everyday products '
         'sold through general trade, modern trade and e-commerce.\n'
-        '\u2022  Profit: protected by leading brand positions in categories '
+        '- Profit: protected by leading brand positions in categories '
         'where consumers repurchase frequently.\n'
-        '\u2022  Cash: conversion of operating profit into cash is high, and '
+        '- Cash: conversion of operating profit into cash is high, and '
         'the surplus funds the dividend.',
         '\u25bc',
         'RETURNS TO STAKEHOLDERS\n'
-        '\u2022  Shareholders: a dividend that has exceeded the year\u2019s '
+        '- Shareholders: a dividend that has exceeded the year\u2019s '
         'profit in two of the three years studied, and no debt.\n'
-        '\u2022  Employees and suppliers: wages and trade payables settled in '
+        '- Employees and suppliers: wages and trade payables settled in '
         'the ordinary course.\n'
-        '\u2022  Government: indirect taxes collected on the sale of products '
+        '- Government: indirect taxes collected on the sale of products '
         'and income tax on profits.',
     ]:
         doc.para(block.replace('\n', '  \n'), align='left', indent_left=200,
@@ -401,46 +400,46 @@ def _s7(doc):
     _h1(doc, '7. SWOT and Management Analysis')
     _t(doc, 'Table A.8: SWOT analysis of Hindustan Unilever Ltd.',
        [['Strengths', 'Weaknesses'],
-        ['\u2022  The largest distribution network in the Indian FMCG sector '
+        ['- The largest distribution network in the Indian FMCG sector '
          'and more than fifty brands across fifteen categories, several of '
          'which lead their category.\n'
-         '\u2022  Effectively debt free, with the lowest operating ratio of '
+         '- Effectively debt free, with the lowest operating ratio of '
          'the three companies studied, at 76.67 per cent in FY2025-26, and the '
          'highest interest coverage at 34.19 times.\n'
-         '\u2022  Consistent conversion of profit into cash: operating cash '
+         '- Consistent conversion of profit into cash: operating cash '
          'flow was 105 per cent of operating profit in FY2025-26 and free cash '
          'flow of Rs. 9,667 crore was more than sufficient to fund the '
          'dividend.\n'
-         '\u2022  Access to the parent company\u2019s research and '
+         '- Access to the parent company\u2019s research and '
          'development and to its global brand portfolio.',
-         '\u2022  The slowest revenue growth of the three companies studied, '
+         '- The slowest revenue growth of the three companies studied, '
          'at a compound 2.1 per cent a year over the two years to FY2025-26.\n'
-         '\u2022  Normalised earnings per share almost unchanged at about '
+         '- Normalised earnings per share almost unchanged at about '
          'Rs. 44 across the three years.\n'
-         '\u2022  Distributions to shareholders exceeded profit in FY2024-25 '
+         '- Distributions to shareholders exceeded profit in FY2024-25 '
          'and reserves fell by Rs. 1,816 crore that year.\n'
-         '\u2022  Operating cash flow declined from Rs. 15,469 crore to '
+         '- Operating cash flow declined from Rs. 15,469 crore to '
          'Rs. 10,999 crore while operating profit was rising.'],
         ['Opportunities', 'Threats'],
-        ['\u2022  Premiumisation in beauty, wellbeing and personal care, '
+        ['- Premiumisation in beauty, wellbeing and personal care, '
          'supported by the announced plan to invest up to Rs. 20,000 crore in '
          'manufacturing capacity in the premium segments.\n'
-         '\u2022  Quick commerce and e-commerce, in which the company\u2019s '
+         '- Quick commerce and e-commerce, in which the company\u2019s '
          'mass brands are under-represented relative to their share of '
          'general trade.\n'
-         '\u2022  Growth of the rural market, where the company already '
+         '- Growth of the rural market, where the company already '
          'derives 35 to 40 per cent of revenue and supports retail ordering '
          'through an application used by about 1.4 million retailers.\n'
-         '\u2022  Recovery in urban discretionary demand as food inflation '
+         '- Recovery in urban discretionary demand as food inflation '
          'moderates.',
-         '\u2022  Competition from digital-first brands, which has raised the '
+         '- Competition from digital-first brands, which has raised the '
          'cost of defending share in personal care and colour cosmetics.\n'
-         '\u2022  The shift of volume towards quick commerce, which carries a '
+         '- The shift of volume towards quick commerce, which carries a '
          'higher cost to serve than general trade.\n'
-         '\u2022  Input cost inflation in packaging and in imported raw '
+         '- Input cost inflation in packaging and in imported raw '
          'materials, combined with a limited ability to raise prices without '
          'affecting volume.\n'
-         '\u2022  Valuation risk: the shares trade at 41.68 times normalised '
+         '- Valuation risk: the shares trade at 41.68 times normalised '
          'earnings for a business whose normalised earnings per share grew by '
          'less than one per cent a year.'],
        ], [5233, 5233], ['l', 'l'])
@@ -551,7 +550,7 @@ def _s8(doc, fig):
     ]:
         doc.para(label, bold=True, align='left', before=140)
         for line in lines:
-            doc.para(line, align='both', indent_left=360, first_line=180)
+            doc.para(line, align='both', indent_left=360, first_line=216)
     doc.para(
         'The comparison of the reported and normalised columns is the single '
         'most important calculation in this appendix. On the reported figures '
@@ -669,11 +668,11 @@ def _s10(doc, fig):
         'a year, against reported profit growth of 21.02 per cent a year on '
         'the strength of the FY2025-26 one-time gain.', align='both')
     fig('figA_1', 6.2, 3.0, before=140, after=70)
-    doc.para('Figure A.1: Net revenue of Hindustan Unilever Ltd., FY2022 to '
-             'FY2026', bold=True, align='center', size=11.0)
+    doc.caption('Figure A.1: Net revenue of Hindustan Unilever Ltd., FY2022 to '
+             'FY2026')
     fig('figA_3', 6.2, 3.0, before=120, after=70)
-    doc.para('Figure A.2: Profit after tax of Hindustan Unilever Ltd., FY2022 '
-             'to FY2026 (as reported)', bold=True, align='center', size=11.0)
+    doc.caption('Figure A.2: Profit after tax of Hindustan Unilever Ltd., FY2022 '
+             'to FY2026 (as reported)')
     doc.para(
         'The two charts should be read together. Revenue rose by 10.9 per cent '
         'over five years, which is about 2.1 per cent a year and is close to '
@@ -700,8 +699,8 @@ def _s10(doc, fig):
         'profits in two of the three years. This is what holds the return on '
         'equity above twenty per cent even though profit is flat.', align='both')
     fig('figA_2', 5.6, 3.0, before=140, after=70)
-    doc.para('Figure A.3: Indicative composition of revenue by business group, '
-             'FY2025-26', bold=True, align='center', size=11.0)
+    doc.caption('Figure A.3: Indicative composition of revenue by business group, '
+             'FY2025-26')
 
 
 def _s11(doc):
@@ -814,8 +813,8 @@ def _s13(doc, fig):
         'lead reflects the market\u2019s assessment of slower growth rather '
         'than an advantage in the business.', align='both', before=120)
     fig('figA_4', 6.0, 2.9, before=140, after=70)
-    doc.para('Figure A.4: Price to earnings multiple of the three companies as '
-             'at 12 October 2026', bold=True, align='center', size=11.0)
+    doc.caption('Figure A.4: Price to earnings multiple of the three companies as '
+             'at 12 October 2026')
     doc.para(
         'Valuation relative to the sector: the company trades at 41.68 times '
         'normalised earnings, which is above the multiple of Dabur India and '
@@ -854,8 +853,7 @@ def _s14(doc, fig):
          'been left rather than an assumed figure'],
        ], [2900, 3200, 4366], ['l', 'l', 'l'])
     fig('figA_5', 5.6, 2.9, before=140, after=70)
-    doc.para('Figure A.5: Market price against the 52 week range',
-             bold=True, align='center', size=11.0)
+    doc.caption('Figure A.5: Market price against the 52 week range')
     doc.para(
         'The position of the share near the bottom of its one-year range is '
         'consistent with the financial picture. In a year in which the '
@@ -1227,4 +1225,4 @@ def _s21(doc):
         'No recommendation to buy, hold or sell the shares is made, and no '
         'target price is stated.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)

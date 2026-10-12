@@ -6,10 +6,8 @@ from docgen import Doc, BODY_SIZE
 
 def chapter_5(doc, fig):
     doc.new_page()
-    doc.para('CHAPTER 5 :- EIC FRAMEWORK (ECONOMIC, INDUSTRY & COMPANY '
-             'ANALYSIS)', bold=True, align='left')
-    doc.mark('CHAPTER 5 :- EIC FRAMEWORK (ECONOMIC, INDUSTRY & COMPANY '
-             'ANALYSIS)', 1)
+    doc.chapter('CHAPTER 5 :- EIC FRAMEWORK (ECONOMIC, INDUSTRY & COMPANY '
+                'ANALYSIS)')
     _economic(doc, fig)
     _industry(doc, fig)
     _hul(doc, fig)
@@ -22,9 +20,9 @@ def chapter_5(doc, fig):
 # ---------------------------------------------------------------------------
 def _economic(doc, fig):
     doc.heading('5.1 ECONOMIC ANALYSIS (MACROECONOMIC FACTORS & CURRENT '
-                'INDIAN ECONOMY)', 2,
+                'INDUSTRY)', 2,
                 '   5.1 Economic Analysis (Macroeconomic Factors & Current '
-                'Indian Economy)')
+                'Industry)')
     para = lambda t, **kw: doc.para(t, align='both', **kw)
     doc.para('A.  What economic analysis is', bold=True, align='left',
              before=140)
@@ -46,8 +44,8 @@ def _economic(doc, fig):
         'section therefore examines the state of the Indian economy in 2026 '
         'with those channels in mind, and Table 5.1 sets out the principal '
         'indicators used.')
-    doc.para('Table 5.1: Principal macroeconomic indicators used in the '
-             'analysis', bold=True, align='left', before=120)
+    doc.table_title('Table 5.1: Principal macroeconomic indicators used in the '
+             'analysis')
     doc.table([
         ['Indicator', 'What it measures', 'Why it matters for an FMCG company'],
         ['Real gross domestic product', 'The total value of final goods and '
@@ -99,8 +97,7 @@ def _economic(doc, fig):
         'describes as a double engine of consumption and investment. Private '
         'final consumption expenditure accounted for 61.5 per cent of gross '
         'domestic product in FY2025-26.')
-    doc.para('Table 5.2: Gross domestic product growth in India',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 5.2: Gross domestic product growth in India')
     doc.table([
         ['Indicator', 'Figure'],
         ['Real gross domestic product growth, FY2025-26 (Economic Survey '
@@ -132,8 +129,7 @@ def _economic(doc, fig):
         'price index for retail inflation and for monetary policy decisions, '
         'and the reserve bank operates within a tolerance band of two to six '
         'per cent around a target of four per cent.')
-    doc.para('Table 5.3: Consumer price inflation in India, 2026',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 5.3: Consumer price inflation in India, 2026')
     doc.table([
         ['Measure', 'Figure'],
         ['Consumer price index inflation, July 2026', '4.45 per cent'],
@@ -168,8 +164,7 @@ def _economic(doc, fig):
         'price stability while supporting growth. The most important policy '
         'rate is the repo rate, at which the central bank lends against '
         'government securities.')
-    doc.para('Table 5.4: Policy rates in India, as at August 2026',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 5.4: Policy rates in India, as at August 2026')
     doc.table([
         ['Monetary policy indicator', 'Rate'],
         ['Repo rate', '5.25 per cent'],
@@ -269,8 +264,7 @@ def _economic(doc, fig):
         'higher-priced products rather than with an increase in the quantity '
         'consumed.')
     fig('fig5_1', 6.2, 3.0, before=140, after=80)
-    doc.para('Figure 5.1: Value and volume growth of the Indian FMCG market',
-             bold=True, align='center', size=11.0)
+    doc.caption('Figure 5.1: Value and volume growth of the Indian FMCG market')
     para(
         'The comparison is important for interpretation. Growth in value can '
         'be achieved by raising prices or by selling a more expensive mix, '
@@ -307,7 +301,7 @@ def _economic(doc, fig):
         'shortfall against that expectation would leave the current valuation '
         'multiples without support.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
 
 # ---------------------------------------------------------------------------
@@ -315,7 +309,7 @@ def _economic(doc, fig):
 # ---------------------------------------------------------------------------
 def _industry(doc, fig):
     doc.heading('5.2 INDUSTRY ANALYSIS (FMCG INDUSTRY DRIVERS & TRENDS)', 2,
-                '   5.2 Industry Analysis (FMCG Industry Drivers and Trends)')
+                '   5.2 Industry Analysis (FMCG Industry Drivers & Trends)')
     para = lambda t, **kw: doc.para(t, align='both', **kw)
     doc.para('Introduction', bold=True, align='left', before=140)
     para(
@@ -352,10 +346,9 @@ def _industry(doc, fig):
         'of about Rs. 31,428 crore, approximately 34 per cent of total '
         'advertising expenditure.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     fig('fig5_2', 6.2, 3.0, before=140, after=80)
-    doc.para('Figure 5.2: Composition of Indian FMCG sales by broad category',
-             bold=True, align='center', size=11.0)
+    doc.caption('Figure 5.2: Composition of Indian FMCG sales by broad category')
 
     doc.para('Major market drivers', bold=True, align='left', before=140)
     for b in [
@@ -386,11 +379,10 @@ def _industry(doc, fig):
         'up to June 2025, approved 278 units, attracted about Rs. 9,032 crore '
         'of investment and created about 3.4 lakh jobs.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.para('Key segments of the sector', bold=True, align='left', before=140)
-    doc.para('Table 5.5: Principal segments of the Indian FMCG sector',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 5.5: Principal segments of the Indian FMCG sector')
     doc.table([
         ['Segment', 'What it comprises', 'Representative companies'],
         ['Home care', 'Detergents, dishwashing products, surface cleaners, '
@@ -437,12 +429,14 @@ def _industry(doc, fig):
 # 5.3  Hindustan Unilever Ltd.
 # ---------------------------------------------------------------------------
 def _company_header(doc, name, n):
-    doc.heading('5.%d COMPANY ANALYSIS \u2013 %s' % (n, name), 2,
-                '   5.%d Company Analysis \u2013 %s' % (n, name))
+    """The heading of a company sub-section, in the reference's index form."""
+    tidy = name.title().replace('Ltd.', 'Ltd.')
+    doc.heading('5.%d COMPANY ANALYSIS - %s' % (n, name), 2,
+                '   5.%d Company Analysis - %s' % (n, tidy))
 
 
 def _fin_table(doc, caption, rows, widths=None):
-    doc.para(caption, bold=True, align='left', before=120)
+    doc.table_title(caption)
     doc.table(rows, widths or [4300, 2055, 2055, 2056],
               aligns=['l', 'r', 'r', 'r'])
     doc.after_table(0.4)
@@ -462,8 +456,7 @@ def _hul(doc, fig):
         'Personal Care, with a Foods and Refreshment business alongside them.')
     doc.para('1.  Company overview and corporate identity', bold=True,
              align='left', before=140)
-    doc.para('Table 5.6: Hindustan Unilever Ltd. \u2014 company identification',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 5.6: Hindustan Unilever Ltd. \u2014 company identification')
     doc.table([
         ['Particular', 'Detail'],
         ['Company name', 'Hindustan Unilever Limited'],
@@ -518,7 +511,7 @@ def _hul(doc, fig):
         'transfer recognised in the company\u2019s consolidated profit and '
         'loss account.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.para('3.  Products, brands and revenue segments', bold=True,
              align='left', before=140)
@@ -533,8 +526,8 @@ def _hul(doc, fig):
         'the company states that its products reach a very large share of '
         'Indian households. Table 5.7 sets out the segment structure and the '
         'approximate contribution of each group to revenue.')
-    doc.para('Table 5.7: Hindustan Unilever Ltd. \u2014 principal segments and '
-             'product groups', bold=True, align='left', before=120)
+    doc.table_title('Table 5.7: Hindustan Unilever Ltd. \u2014 principal segments and '
+             'product groups')
     doc.table([
         ['Segment', 'Principal categories',
          'Indicative share of revenue'],
@@ -624,9 +617,8 @@ def _hul(doc, fig):
         'that is drawn from the reported figure alone would therefore be '
         'incorrect.')
     fig('fig5_3', 6.1, 2.9, before=140, after=60)
-    doc.para('Figure 5.3: Hindustan Unilever Ltd. \u2014 net revenue and '
-             'profit after tax, FY2023-24 to FY2025-26', bold=True,
-             align='center', size=11.0)
+    doc.caption('Figure 5.3: Hindustan Unilever Ltd. \u2014 net revenue and '
+             'profit after tax, FY2023-24 to FY2025-26')
     para(
         'The revenue chart is almost flat, which is the central fact about the '
         'company. Revenue of Rs. 64,468 crore in FY2025-26 is 4.2 per cent '
@@ -736,48 +728,47 @@ def _hul(doc, fig):
 
     doc.para('7.  Strengths, weaknesses, opportunities and threats', bold=True,
              align='left', before=140)
-    doc.para('Table 5.13: Hindustan Unilever Ltd. \u2014 SWOT analysis',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 5.13: Hindustan Unilever Ltd. \u2014 SWOT analysis')
     doc.table([
         ['Strengths', 'Weaknesses'],
-        ['\u2022  The largest distribution network in the Indian FMCG sector '
+        ['- The largest distribution network in the Indian FMCG sector '
          'and a portfolio of more than fifty brands, several of which lead '
          'their category.\n'
-         '\u2022  Effectively debt free, with the lowest operating ratio of '
+         '- Effectively debt free, with the lowest operating ratio of '
          'the three companies studied and the strongest interest coverage.\n'
-         '\u2022  Consistent cash generation: operating cash flow was 105 per '
+         '- Consistent cash generation: operating cash flow was 105 per '
          'cent of operating profit in FY2025-26 and free cash flow of '
          'Rs. 9,667 crore comfortably funds the dividend.\n'
-         '\u2022  Access to the parent company\u2019s research and development '
+         '- Access to the parent company\u2019s research and development '
          'and global brand portfolio.',
-         '\u2022  Revenue growth has been the slowest of the three companies: '
+         '- Revenue growth has been the slowest of the three companies: '
          '2.1 per cent a year over the two years to FY2025-26.\n'
-         '\u2022  Normalised earnings per share was flat at about Rs. 44 '
+         '- Normalised earnings per share was flat at about Rs. 44 '
          'across the three years.\n'
-         '\u2022  Distributions to shareholders exceeded the profit earned in '
+         '- Distributions to shareholders exceeded the profit earned in '
          'FY2024-25, and reserves were reduced by Rs. 1,816 crore that '
          'year.\n'
-         '\u2022  Declining operating cash flow, from Rs. 15,469 crore to '
+         '- Declining operating cash flow, from Rs. 15,469 crore to '
          'Rs. 10,999 crore, while profit was rising.'],
         ['Opportunities', 'Threats'],
-        ['\u2022  Premiumisation in beauty, wellbeing and personal care, '
+        ['- Premiumisation in beauty, wellbeing and personal care, '
          'supported by a plan to invest up to Rs. 20,000 crore in '
          'manufacturing capacity in the premium segments.\n'
-         '\u2022  Quick commerce and e-commerce, where the company\u2019s mass '
+         '- Quick commerce and e-commerce, where the company\u2019s mass '
          'brands are under-represented relative to their share of general '
          'trade.\n'
-         '\u2022  Growth of the rural market, where the company already '
+         '- Growth of the rural market, where the company already '
          'derives 35 to 40 per cent of revenue and supports retail ordering '
          'through a retailer application with about 1.4 million users.\n'
-         '\u2022  Recovery in urban discretionary demand as inflation '
+         '- Recovery in urban discretionary demand as inflation '
          'moderates.',
-         '\u2022  Competition from digital-first brands, which has raised the '
+         '- Competition from digital-first brands, which has raised the '
          'cost of defending share in personal care and colour cosmetics.\n'
-         '\u2022  A shift in channel mix towards quick commerce, which carries '
+         '- A shift in channel mix towards quick commerce, which carries '
          'a higher cost to serve than general trade.\n'
-         '\u2022  Input cost inflation in packaging and in imported raw '
+         '- Input cost inflation in packaging and in imported raw '
          'materials, combined with limited ability to raise prices.\n'
-         '\u2022  Valuation risk: the shares trade at a high multiple of '
+         '- Valuation risk: the shares trade at a high multiple of '
          'earnings that have been flat, which leaves little room for '
          'disappointment.'],
     ], [5233, 5233], aligns=['l', 'l'])
@@ -816,8 +807,8 @@ def _britannia(doc, fig):
         'a higher return on the capital it employs.')
     doc.para('1.  Company overview and corporate identity', bold=True,
              align='left', before=140)
-    doc.para('Table 5.14: Britannia Industries Ltd. \u2014 company '
-             'identification', bold=True, align='left', before=120)
+    doc.table_title('Table 5.14: Britannia Industries Ltd. \u2014 company '
+             'identification')
     doc.table([
         ['Particular', 'Detail'],
         ['Company name', 'Britannia Industries Limited'],
@@ -868,7 +859,7 @@ def _britannia(doc, fig):
         'dealers, in cost efficiency programmes and in premium product '
         'variants.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.para('3.  Products, brands and revenue segments', bold=True,
              align='left', before=140)
@@ -881,8 +872,8 @@ def _britannia(doc, fig):
         'croissants. Because the portfolio is concentrated in biscuits, both '
         'the revenue and the margin of the company depend heavily on the '
         'prices of wheat flour, sugar, edible oil and packaging material.')
-    doc.para('Table 5.15: Britannia Industries Ltd. \u2014 principal product '
-             'groups', bold=True, align='left', before=120)
+    doc.table_title('Table 5.15: Britannia Industries Ltd. \u2014 principal product '
+             'groups')
     doc.table([
         ['Product group', 'Principal categories', 'Role in the portfolio'],
         ['Biscuits', 'Mass-market, mid-price and premium biscuits across '
@@ -940,9 +931,8 @@ def _britannia(doc, fig):
         'sustainability of the growth rate depends on whether the operating '
         'improvement continues.')
     fig('fig5_4', 6.1, 2.9, before=140, after=60)
-    doc.para('Figure 5.4: Britannia Industries Ltd. \u2014 net revenue and '
-             'profit after tax, FY2023-24 to FY2025-26', bold=True,
-             align='center', size=11.0)
+    doc.caption('Figure 5.4: Britannia Industries Ltd. \u2014 net revenue and '
+             'profit after tax, FY2023-24 to FY2025-26')
     para(
         'Unlike the chart for Hindustan Unilever, both lines in this chart '
         'slope upward, and the profit line steepens in the final year. The '
@@ -1033,50 +1023,49 @@ def _britannia(doc, fig):
 
     doc.para('7.  Strengths, weaknesses, opportunities and threats', bold=True,
              align='left', before=140)
-    doc.para('Table 5.20: Britannia Industries Ltd. \u2014 SWOT analysis',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 5.20: Britannia Industries Ltd. \u2014 SWOT analysis')
     doc.table([
         ['Strengths', 'Weaknesses'],
-        ['\u2022  Market leadership in biscuits and one of the strongest '
+        ['- Market leadership in biscuits and one of the strongest '
          'distribution networks in the Indian packaged foods industry, '
          'including a rural preferred dealer network.\n'
-         '\u2022  The highest return on equity and return on capital employed '
+         '- The highest return on equity and return on capital employed '
          'of the three companies studied, at 49.68 and 52.63 per cent in '
          'FY2025-26.\n'
-         '\u2022  Consistent cash generation: operating cash flow of about '
+         '- Consistent cash generation: operating cash flow of about '
          'Rs. 2,600 crore in each of the three years and free cash flow of '
          'Rs. 2,408 crore in FY2025-26.\n'
-         '\u2022  A deliberate reduction in leverage: total borrowings fell '
+         '- A deliberate reduction in leverage: total borrowings fell '
          'from Rs. 2,041 crore to Rs. 1,358 crore over the three years.',
-         '\u2022  Concentration in a single product category. Biscuits account '
+         '- Concentration in a single product category. Biscuits account '
          'for the greater part of revenue, so the company is directly exposed '
          'to wheat, sugar and edible oil prices.\n'
-         '\u2022  The lowest net profit margin of the three companies studied, '
+         '- The lowest net profit margin of the three companies studied, '
          'at 13.25 per cent, and the highest operating ratio, at 81.65 per '
          'cent.\n'
-         '\u2022  A current ratio below 1.2 times in each year, which leaves '
+         '- A current ratio below 1.2 times in each year, which leaves '
          'little short-term liquidity buffer.\n'
-         '\u2022  Part of the FY2025-26 profit growth came from a lower '
+         '- Part of the FY2025-26 profit growth came from a lower '
          'effective tax rate rather than from operations.'],
         ['Opportunities', 'Threats'],
-        ['\u2022  Growth of the dairy and adjacent bakery businesses, which '
+        ['- Growth of the dairy and adjacent bakery businesses, which '
          'use the same distribution network and raise the value of each '
          'delivery.\n'
-         '\u2022  Health-oriented and premium variants, including whole-wheat, '
+         '- Health-oriented and premium variants, including whole-wheat, '
          'millet and high-protein products, which respond to a genuine shift '
          'in consumer preference.\n'
-         '\u2022  Continued expansion in rural markets, where the company has '
+         '- Continued expansion in rural markets, where the company has '
          'invested in preferred dealer networks.\n'
-         '\u2022  Operating leverage on fixed costs if revenue growth continues '
+         '- Operating leverage on fixed costs if revenue growth continues '
          'at the current rate.',
-         '\u2022  Input cost inflation in wheat flour, sugar, edible oil and '
+         '- Input cost inflation in wheat flour, sugar, edible oil and '
          'packaging, which the company can pass on only gradually.\n'
-         '\u2022  Competition in biscuits from regional manufacturers and from '
+         '- Competition in biscuits from regional manufacturers and from '
          'the snacking portfolios of larger diversified companies.\n'
-         '\u2022  The steady shift of snacking demand towards savoury and '
+         '- The steady shift of snacking demand towards savoury and '
          'health-oriented products, in which the company\u2019s portfolio is '
          'less developed than in sweet biscuits.\n'
-         '\u2022  Valuation risk: the shares trade at the highest multiple of '
+         '- Valuation risk: the shares trade at the highest multiple of '
          'the three companies studied, which assumes that the current rate of '
          'earnings growth continues.'],
     ], [5233, 5233], aligns=['l', 'l'])
@@ -1115,8 +1104,7 @@ def _dabur(doc, fig):
         'rural-weighted of the three companies studied.')
     doc.para('1.  Company overview and corporate identity', bold=True,
              align='left', before=140)
-    doc.para('Table 5.21: Dabur India Ltd. \u2014 company identification',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 5.21: Dabur India Ltd. \u2014 company identification')
     doc.table([
         ['Particular', 'Detail'],
         ['Company name', 'Dabur India Limited'],
@@ -1165,7 +1153,7 @@ def _dabur(doc, fig):
         'for healthcare, home and personal care, and foods, with continued '
         'investment in rural distribution and in e-commerce.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
 
     doc.para('3.  Products, brands and revenue segments', bold=True,
              align='left', before=140)
@@ -1178,8 +1166,7 @@ def _dabur(doc, fig):
         'products. The international business operates branded consumer '
         'products in a number of markets in the Middle East, Africa and South '
         'Asia.')
-    doc.para('Table 5.22: Dabur India Ltd. \u2014 principal business verticals',
-             bold=True, align='left', before=120)
+    doc.table_title('Table 5.22: Dabur India Ltd. \u2014 principal business verticals')
     doc.table([
         ['Vertical', 'Principal categories',
          'Characteristics of the business'],
@@ -1244,9 +1231,8 @@ def _dabur(doc, fig):
         'profit is derived from income earned on its investments rather than '
         'from the sale of goods.')
     fig('fig5_5', 6.1, 2.9, before=140, after=60)
-    doc.para('Figure 5.5: Dabur India Ltd. \u2014 net revenue and profit after '
-             'tax, FY2023-24 to FY2025-26', bold=True, align='center',
-             size=11.0)
+    doc.caption('Figure 5.5: Dabur India Ltd. \u2014 net revenue and profit after '
+             'tax, FY2023-24 to FY2025-26')
     para(
         'The revenue line rises gently and the profit line dips in the middle '
         'year before recovering. Neither line shows the acceleration visible '
@@ -1354,52 +1340,51 @@ def _dabur(doc, fig):
 
     doc.para('7.  Strengths, weaknesses, opportunities and threats', bold=True,
              align='left', before=140)
-    doc.para('Table 5.27: Dabur India Ltd. \u2014 SWOT analysis', bold=True,
-             align='left', before=120)
+    doc.table_title('Table 5.27: Dabur India Ltd. \u2014 SWOT analysis')
     doc.table([
         ['Strengths', 'Weaknesses'],
-        ['\u2022  The leading position in Ayurvedic and natural healthcare, a '
+        ['- The leading position in Ayurvedic and natural healthcare, a '
          'category that is growing as consumer preference shifts towards '
          'natural products, and a portfolio reaching eight out of ten Indian '
          'households.\n'
-         '\u2022  The deepest rural reach of the three companies studied, '
+         '- The deepest rural reach of the three companies studied, '
          'covering over 1,31,000 villages and 1.42 million outlets, with 45 to '
          '50 per cent of revenue derived from rural markets.\n'
-         '\u2022  The highest cash conversion of the three companies: '
+         '- The highest cash conversion of the three companies: '
          'operating cash flow was 122 per cent of operating profit in '
          'FY2025-26.\n'
-         '\u2022  Low leverage, with a debt to equity ratio below 0.12 times in '
+         '- Low leverage, with a debt to equity ratio below 0.12 times in '
          'each of the three years.',
-         '\u2022  The slowest revenue growth of the three companies, at a '
+         '- The slowest revenue growth of the three companies, at a '
          'compound rate of 3.13 per cent over the two years to FY2025-26.\n'
-         '\u2022  Earnings per share growing at only 1.34 per cent a year, '
+         '- Earnings per share growing at only 1.34 per cent a year, '
          'which is below the rate of inflation.\n'
-         '\u2022  Falling return on capital employed, return on equity and '
+         '- Falling return on capital employed, return on equity and '
          'return on assets in each of the three years.\n'
-         '\u2022  A large part of reported profit comes from other income, and '
+         '- A large part of reported profit comes from other income, and '
          'a large part of the asset base is held as financial investments '
          'rather than employed in the business.'],
         ['Opportunities', 'Threats'],
-        ['\u2022  Growth of the natural and Ayurvedic categories, which the '
+        ['- Growth of the natural and Ayurvedic categories, which the '
          'company is best placed to serve and which the larger personal care '
          'companies are also entering.\n'
-         '\u2022  Expansion of the foods and beverages vertical, which grew '
+         '- Expansion of the foods and beverages vertical, which grew '
          'faster than the rest of the portfolio in recent years.\n'
-         '\u2022  E-commerce and quick commerce, where rural-weighted brands '
+         '- E-commerce and quick commerce, where rural-weighted brands '
          'are under-represented and where the company\u2019s health positioning '
          'carries a premium.\n'
-         '\u2022  International expansion in the Middle East, Africa and South '
+         '- International expansion in the Middle East, Africa and South '
          'Asia, where the brands are established and the categories are less '
          'penetrated.',
-         '\u2022  Weak rural demand: the company has the largest rural '
+         '- Weak rural demand: the company has the largest rural '
          'exposure of the three companies studied, and rural volume growth '
          'fell to 3.6 per cent in 2025 against urban growth of 4.6 per cent.\n'
-         '\u2022  Entry of larger competitors into the natural and herbal '
+         '- Entry of larger competitors into the natural and herbal '
          'personal care categories, which the company has historically '
          'dominated.\n'
-         '\u2022  Input cost inflation in herbs, edible oils and packaging '
+         '- Input cost inflation in herbs, edible oils and packaging '
          'materials.\n'
-         '\u2022  Regulatory or labelling changes affecting the claims that '
+         '- Regulatory or labelling changes affecting the claims that '
          'may be made for Ayurvedic and health products.'],
     ], [5233, 5233], aligns=['l', 'l'])
     doc.after_table(0.5)

@@ -1,44 +1,75 @@
 # -*- coding: utf-8 -*-
-"""Preliminary pages of the report."""
+"""Preliminary pages of the report.
+
+The layout follows the approved reference report line for line:  the title
+page is built from centred bold 12 pt paragraphs spaced by blank paragraphs,
+the certificate carries the institute's letterhead, and each of the remaining
+preliminary pages opens with a centred title -- 12 pt for CERTIFICATE and
+DECLARATION, 14 pt for ACKNOWLEDGEMENT and EXECUTIVE SUMMARY.
+"""
 
 from docgen import Doc, BODY_SIZE
+
+BIG = 14.0
+TITLE_BEFORE = 200
+TITLE_AFTER = 120
+
+
+def _c(doc, text, size=BODY_SIZE, before=0, after=80):
+    """A centred bold line, the way every line of the title page is set."""
+    return doc.para(text, size=size, bold=True, align='center',
+                    before=before, after=after)
+
+
+def _front_title(doc, text, size=BODY_SIZE):
+    """The title of a preliminary page:  centred, bold, keepNext."""
+    return doc.para(text, size=size, bold=True, align='center',
+                    before=TITLE_BEFORE, after=TITLE_AFTER, keep_next=True)
+
+
+def _spacers(doc, n):
+    for _ in range(n):
+        doc.para('', after=0)
 
 
 def title_page(doc, media):
     """The title page, laid out like the approved reference report."""
     logo = media['logo'] if 'logo' in media else None
-    doc.blank(1)
-    doc.para('DES\u2019S NAVINCHANDRA MEHTA INSTITUTE OF TECHNOLOGY AND '
-             'DEVELOPMENT,', size=BODY_SIZE, bold=True, align='center')
-    doc.para('MUMBAI \u2013 400028', size=BODY_SIZE, bold=True, align='center')
+    _spacers(doc, 3)
+    _c(doc, 'DES\u2019S NAVINCHANDRA MEHTA INSTITUTE OF TECHNOLOGY AND '
+            'DEVELOPMENT,')
+    _c(doc, 'MUMBAI \u2013 400028')
+    _spacers(doc, 1)
     if logo:
-        doc.image(logo, 1.30, 1.23, before=120, after=120)
+        doc.image(logo, 2.20, 1.98, before=0, after=0)
     else:
-        doc.blank(1)
-    doc.para('SUMMER INTERNSHIP REPORT ON', bold=True, align='center',
-             before=120)
-    doc.para('\u201c FUNDAMENTAL ANALYSIS OF THE FMCG SECTOR \u201c', bold=True,
-             align='center')
-    doc.para('(With Internship Exposure to Equity Dealing, the Futures and '
-             'Options Market and Trading Terminals at Rosy Blue Securities '
-             'Pvt. Ltd.)', size=11.0, bold=True, align='center', before=60)
-    doc.para('Submitted in partial fulfilment for the award of the degree of',
-             bold=True, align='center', before=160)
-    doc.para('MASTER OF MANAGEMENT STUDIES', bold=True, align='center')
-    doc.para('FINANCE', bold=True, align='center')
-    doc.para('UNIVERSITY OF MUMBAI', bold=True, align='center')
-    doc.para('Submitted by', bold=True, align='center', before=160)
-    doc.para('Nikhil [ADD: full name as per institute records]', bold=True,
-             align='center')
-    doc.para('ROLL NO :- [ADD: roll number]', bold=True, align='center')
-    doc.para('2025-2027', bold=True, align='center')
-    doc.para('Under The Guidance of', bold=True, align='center', before=160)
-    doc.para('DR. RAHUL N. WADEKAR', bold=True, align='center')
+        _spacers(doc, 1)
+    _spacers(doc, 1)
+    _c(doc, 'SUMMER INTERNSHIP REPORT ON')
+    _spacers(doc, 1)
+    _c(doc, '\u201c FUNDAMENTAL ANALYSIS OF THE FMCG SECTOR \u201c')
+    _spacers(doc, 1)
+    _c(doc, 'Submitted in partial fulfilment for the award of the degree of')
+    _spacers(doc, 1)
+    _c(doc, 'MASTER OF MANAGEMENT STUDIES')
+    _c(doc, 'FINANCE')
+    _c(doc, 'UNIVERSITY OF MUMBAI')
+    _c(doc, 'Submitted by')
+    _c(doc, 'Nikhil [ADD: full name as per institute records]')
+    _c(doc, 'ROLL NO :- [ADD: roll number]')
+    _c(doc, '2025-2027')
+    _c(doc, 'Under The Guidance of')
+    _c(doc, 'DR. RAHUL N. WADEKAR')
 
 
-def certificate(doc):
+def certificate(doc, media=None):
+    """The certificate page, carrying the institute's letterhead."""
     doc.new_page()
-    doc.para('CERTIFICATE', bold=True, align='center', size=BODY_SIZE)
+    letterhead = media['letterhead'] if media is not None and 'letterhead' in media else None
+    if letterhead:
+        doc.image(letterhead, 7.27, 1.92, before=0, after=0)
+    _spacers(doc, 1)
+    _front_title(doc, 'CERTIFICATE')
     doc.para(
         'This is to certify that the summer internship report titled '
         '\u201cFundamental Analysis of the FMCG Sector\u201d submitted in '
@@ -49,24 +80,24 @@ def certificate(doc):
         'guidance, and has been found satisfactory. This project work is '
         'original and not submitted earlier for the award of any degree, '
         'diploma or associateship of any other University/Institute.',
-        align='both', before=160)
-    doc.blank(4.0)
+        align='both')
+    _spacers(doc, 6)
     doc.para('-------------------------                                        '
              '                                -------------------------',
-             align='left')
+             align='both')
     doc.para('Dr. Rasika Mallya                                                    '
              '                                        Dr. Rahul Wadekar',
-             bold=True, align='left')
+             align='both')
     doc.para('DIRECTOR                                                             '
              '                                            PROJECT GUIDE',
-             bold=True, align='left')
-    doc.blank(3.0)
-    doc.para('EXTERNAL EXAMINER', bold=True, align='left')
+             align='both')
+    _spacers(doc, 2)
+    doc.para('EXTERNAL EXAMINER', bold=True, align='both')
 
 
 def declaration(doc):
     doc.new_page()
-    doc.para('DECLARATION', bold=True, align='center')
+    _front_title(doc, 'DECLARATION')
     doc.para(
         'I, Nikhil [ADD: full name], Roll No. [ADD: roll number], a student of '
         'the Master of Management Studies (Finance) programme of the '
@@ -76,7 +107,7 @@ def declaration(doc):
         'Mumbai is a bonafide work undertaken by me and it is not submitted to '
         'any other University or Institute for the award of any degree, '
         'diploma or certificate, or published at any time before.',
-        align='both', before=160)
+        align='both')
     doc.para(
         'The report is based on my own learning and observation during the '
         'summer internship undertaken at Rosy Blue Securities Pvt. Ltd. in the '
@@ -90,17 +121,17 @@ def declaration(doc):
         'given in this report are illustrative and are identified as such. The '
         'fundamental analysis of the FMCG sector has been carried out for '
         'academic purposes only and does not constitute investment advice.',
-        align='both', before=120)
-    doc.blank(3.0)
-    doc.para('Name :  Nikhil [ADD: full name]                                        '
-             'Signature', align='left')
-    doc.para('Roll No. [ADD: roll number]                                        '
-             '(Nikhil [ADD: full name])', align='left')
+        align='both')
+    _spacers(doc, 6)
+    doc.para('Name :  Nikhil [ADD: full name]                                   '
+             '          Signature', align='both')
+    doc.para('Roll No. [ADD: roll number]                                      '
+             '          (Nikhil [ADD: full name])', align='both')
 
 
 def acknowledgement(doc):
     doc.new_page()
-    doc.para('ACKNOWLEDGEMENT', bold=True, align='center')
+    _front_title(doc, 'ACKNOWLEDGEMENT', size=BIG)
     doc.para(
         'This project has been a valuable learning experience, and I am '
         'grateful to everyone who supported me through it. I extend my sincere '
@@ -110,7 +141,7 @@ def acknowledgement(doc):
         'every figure be traced to a verifiable source, and that every table '
         'be followed by an interpretation rather than a restatement, has '
         'improved both the discipline and the usefulness of this work.',
-        align='both', before=120)
+        align='both')
     doc.para(
         'I am grateful to my parents and to my friends for their encouragement '
         'and patience during the internship and the writing of this report. '
@@ -130,74 +161,62 @@ def acknowledgement(doc):
         'Finally, I am grateful to everyone who contributed indirectly to this '
         'project. Any error that remains in this report is my own.',
         align='both')
-    doc.blank(1.0)
+    _spacers(doc, 1)
     doc.para('Nikhil [ADD: full name]', bold=True, align='right')
 
 
 def executive_summary(doc):
     doc.new_page()
-    doc.para('EXECUTIVE SUMMARY', bold=True, align='center')
-    para = lambda t: doc.para(t, align='both', before=120)
+    _front_title(doc, 'EXECUTIVE SUMMARY', size=BIG)
+    para = lambda t: doc.para(t, align='both')
     para(
-        'Summer training is an important part of management education because '
-        'it places the student inside the activity being studied rather than '
-        'outside it. This report combines the two components required of the '
-        'internship: a record of the work performed on the equity dealing desk '
-        'of Rosy Blue Securities Pvt. Ltd. in the capacity of an Equity '
-        'Dealer, and a fundamental analysis of the Indian fast-moving consumer '
-        'goods sector with a comparative study of three listed companies.')
+        'Summer training places the student inside the activity being studied '
+        'rather than outside it. This report combines the two components '
+        'required of the internship: a record of the work performed on the '
+        'equity dealing desk of Rosy Blue Securities Pvt. Ltd. as an Equity '
+        'Dealer, and a fundamental analysis of the Indian FMCG sector with a '
+        'comparative study of three listed companies.')
     para(
-        'The operational component of the report documents the dealing '
-        'function as it operates on a stock broker\u2019s desk. It covers the '
-        'structure of the Indian secondary market, the trading mechanism on '
-        'the exchange-provided terminal and on the member\u2019s '
-        'Computer-to-Computer Link facility, the margining framework in the '
-        'cash and equity derivatives segments, the settlement cycle, and the '
-        'ladder of statutory charges that applies to every executed trade. The '
-        'report records the working day of a dealer, the order types used in '
-        'practice, the pre-trade risk checks applied before an order leaves '
-        'the member\u2019s server, and the post-trade reconciliation performed '
-        'at the close of the session. Six worked examples convert this '
-        'description into computed evidence: a cost-of-carry valuation of an '
-        'illustrative futures contract, a five-day mark-to-market settlement '
-        'sequence, a Black-Scholes valuation of an illustrative option with '
-        'its sensitivities, a margin build-up and shortfall scenario, and the '
-        'charge computation on illustrative delivery and intraday round trips.')
+        'The operational component documents the dealing function as it '
+        'operates on a stock broker\u2019s desk: the structure of the Indian '
+        'secondary market, the trading mechanism on the exchange terminal and '
+        'on the member\u2019s Computer-to-Computer Link facility, the '
+        'margining framework, the settlement cycle and the statutory charges '
+        'on every executed trade. It also records the working day of a dealer, '
+        'the pre-trade risk checks applied before an order leaves the '
+        'member\u2019s server, and the reconciliation at the close of the '
+        'session. Six worked examples convert this into computed evidence: a '
+        'cost-of-carry valuation of a futures contract, a five-day '
+        'mark-to-market settlement, a Black-Scholes valuation of an option, a '
+        'margin shortfall scenario, and the charges on illustrative delivery '
+        'and intraday trades.')
     para(
         'The analytical component applies fundamental analysis to the Indian '
-        'FMCG sector. The sector is the fourth largest in the Indian economy, '
-        'employs around three million people and is valued at approximately '
-        'Rs. 25 lakh crore, with household and personal care contributing half '
-        'of all sales. Three companies with a March financial year end were '
-        'selected for comparative study: Hindustan Unilever Ltd., Britannia '
-        'Industries Ltd. and Dabur India Ltd. Their financial statements for '
-        'FY2023-24, FY2024-25 and FY2025-26 were analysed using thirteen '
+        'FMCG sector, valued at approximately Rs. 25 lakh crore, with '
+        'household and personal care contributing half of all sales and '
+        'direct employment of about three million people. Three companies '
+        'with a March year end were selected: Hindustan Unilever Ltd., '
+        'Britannia Industries Ltd. and Dabur India Ltd. Their financial '
+        'statements for FY2023-24 to FY2025-26 were analysed using thirteen '
         'ratios covering profitability, returns, liquidity, leverage, '
-        'efficiency and market valuation, and the three were ranked on those '
-        'ratios in a factor analysis.')
+        'efficiency and valuation, and ranked in a factor analysis.')
     para(
         'The analysis finds that Britannia Industries is the strongest '
-        'performer on profitability and capital efficiency, recording a net '
-        'profit margin of 13.25 per cent, a return on capital employed of '
-        '52.63 per cent and a return on equity of 49.68 per cent in FY2025-26. '
+        'performer on profitability and capital efficiency, with a net profit '
+        'margin of 13.25 per cent, a return on capital employed of 52.63 per '
+        'cent and a return on equity of 49.68 per cent in FY2025-26. '
         'Hindustan Unilever has the most conservative financial structure, '
-        'being effectively debt free, with the lowest operating ratio and the '
+        'being effectively debt free with the lowest operating ratio and the '
         'highest interest coverage in the group, but its underlying earnings '
         'were almost flat in FY2025-26 once the one-time gain of '
         'Rs. 4,611 crore from the demerger of its ice cream undertaking is '
-        'excluded. Dabur India has the strongest short-term liquidity position '
-        'and the lowest market valuation, but its revenue and profit growth '
-        'over the three years has been the slowest and its earnings per share '
-        'has grown at 1.34 per cent a year. On the composite ranking of '
-        'thirteen ratios, Hindustan Unilever scores 120 points, Britannia 117 '
-        'and Dabur 114, a narrow spread that reflects the trade-off between '
-        'financial safety and growth rather than a clear overall winner.')
+        'excluded. Dabur India has the strongest liquidity and the lowest '
+        'market valuation, but the slowest revenue and profit growth over the '
+        'three years. On the composite ranking of thirteen ratios, Hindustan '
+        'Unilever scores 120 points, Britannia 117 and Dabur 114.')
     para(
         'The report concludes that fundamental analysis identifies differences '
         'in the quality of performance rather than a single superior company, '
-        'and that on a dealing desk the same security is assessed on an '
-        'entirely different set of attributes, principally price band, '
-        'liquidity and volatility. The main learning of the internship is that '
-        'the analytical and operational views are complementary and must be '
-        'held together. The analysis in this report is academic and does not '
-        'constitute investment advice.')
+        'and that on a dealing desk a security is assessed on different '
+        'attributes: price band, liquidity and volatility. The analysis in '
+        'this report is academic and does not constitute investment advice.')

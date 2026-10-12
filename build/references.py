@@ -34,6 +34,14 @@ REFERENCES = [
     '2025-26.',
     'India Brand Equity Foundation, Fast Moving Consumer Goods industry '
     'report, updated September 2026, www.ibef.org.',
+    'Rosy Blue Securities Private Limited, www.rosybluesecurities.co.in '
+    '\u2014 About Us and Our Services pages, giving the firm\u2019s '
+    'SEBI registration number, corporate identity number, exchange '
+    'memberships and registered office; accessed 12 October 2026.',
+    'Ministry of Corporate Affairs, Government of India \u2014 company '
+    'master data for Rosy Blue Securities Private Limited, CIN '
+    'U65990MH1994PTC080450, as reproduced in the company data services '
+    'of the Registrar of Companies; accessed 12 October 2026.',
     'NielsenIQ India, FMCG quarterly growth data as reported in the industry '
     'report of the India Brand Equity Foundation; accessed October 2026.',
     'National Securities Depository Limited and Central Depository Services '
@@ -103,8 +111,7 @@ BIBLIO_HEADINGS = [
 
 def references(doc):
     doc.new_page()
-    doc.para('REFERENCES & BIBLIOGRAPHY', bold=True, align='left')
-    doc.mark('REFERENCES & BIBLIOGRAPHY', 1)
+    doc.chapter('REFERENCES / BIBLIOGRAPHY')
     doc.para('REFERENCES', bold=True, align='left', before=140)
     for i, item in enumerate(REFERENCES, 1):
         doc.para('%d.  %s' % (i, item), align='both', indent_left=200,

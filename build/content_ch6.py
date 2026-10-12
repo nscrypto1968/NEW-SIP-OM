@@ -44,10 +44,10 @@ def _section(doc, fig, n, title, definition, formula, calcs, source, fmt,
     for key in ORDER:
         doc.para(CO[key] + ' :-', bold=True, align='left', before=100)
         for line in calcs[key]:
-            doc.para('\u2022  ' + line, align='both', indent_left=360,
-                     first_line=180)
+            doc.para('- ' + line, align='both', indent_left=360,
+                     first_line=216)
     if table_label:
-        doc.para(table_label, bold=True, align='left', before=120)
+        doc.table_title(table_label)
     if kind == 'three':
         doc.table(_three_rows(source, fmt), [2666, 2600, 2600, 2600],
                   aligns=['l', 'c', 'c', 'c'])
@@ -58,11 +58,11 @@ def _section(doc, fig, n, title, definition, formula, calcs, source, fmt,
         doc.para(note, align='both')
     doc.para('Interpretation :', bold=True, align='left', before=120)
     for line in interpretation:
-        doc.para('\u2022  ' + line, align='both', indent_left=360,
-                 first_line=180)
+        doc.para('- ' + line, align='both', indent_left=360,
+                 first_line=216)
     if chart:
         fig(chart, 5.9, 2.8, before=140, after=70)
-        doc.para(caption, bold=True, align='center', size=11.0)
+        doc.caption(caption)
     if overall:
         doc.para('Overall Interpretation :', bold=True, align='left',
                  before=140)
@@ -72,9 +72,7 @@ def _section(doc, fig, n, title, definition, formula, calcs, source, fmt,
 
 def chapter_6(doc, fig):
     doc.new_page()
-    doc.para('CHAPTER 6 :- COMPARATIVE RATIO ANALYSIS & INTERPRETATION',
-             bold=True, align='left')
-    doc.mark('CHAPTER 6 :- COMPARATIVE RATIO ANALYSIS & INTERPRETATION', 1)
+    doc.chapter('CHAPTER 6 :- COMPARATIVE RATIO ANALYSIS & INTERPRETATION')
     doc.para('FMCG SECTOR FINANCIAL PERFORMANCE OF HINDUSTAN UNILEVER LTD., '
              'BRITANNIA INDUSTRIES LTD. AND DABUR INDIA LTD.', bold=True,
              align='center')
@@ -99,8 +97,8 @@ def chapter_6(doc, fig):
         'preceding years and with the other two companies. The reported figure '
         'is shown alongside the normalised figure wherever the difference is '
         'material.', align='both')
-    doc.para('Table 6.1: Ratios used in the analysis and the formula applied '
-             'to each', bold=True, align='left', before=120)
+    doc.table_title('Table 6.1: Ratios used in the analysis and the formula applied '
+             'to each')
     doc.table([
         ['Sr. No.', 'Ratio', 'Formula applied'],
         ['1', 'Net profit margin', 'Profit after tax \u00f7 net revenue '
@@ -843,7 +841,7 @@ def chapter_6(doc, fig):
     # Factor analysis
     # ------------------------------------------------------------------
     doc.new_page()
-    doc.heading('Factors Analysis', 2, '   Factor Analysis')
+    doc.heading('FACTOR ANALYSIS', 2, '   Factor analysis')
     doc.para(
         'Factor analysis in this report compares the three companies by '
         'assigning a rank and a score to each company on each of the thirteen '
@@ -866,8 +864,8 @@ def chapter_6(doc, fig):
     _factor_table(doc)
 
     doc.para('COMPANY RANKINGS', bold=True, align='left', before=160)
-    doc.para('Table 6.16: Overall ranking of the three companies on the factor '
-             'analysis', bold=True, align='left', before=60)
+    doc.table_title('Table 6.16: Overall ranking of the three companies on the factor '
+             'analysis')
     doc.table([
         ['COMPANY', 'TOTAL SCORE (OUT OF 130)', 'OVERALL RANKING'],
         ['Hindustan Unilever Ltd.', '120', '1st'],
@@ -914,7 +912,7 @@ def chapter_6(doc, fig):
         'where the return on capital employed of Britannia is more than two '
         'and a half times that of Dabur.',
     ]:
-        doc.para('\u2022  ' + b, align='both', indent_left=360, first_line=180)
+        doc.para('- ' + b, align='both', indent_left=360, first_line=216)
     doc.para(
         'A supplementary check was carried out to test whether the ranking is '
         'an artefact of the single year used. The ten ratios that are computed '
@@ -996,8 +994,8 @@ def _factor_table(doc):
         rows.append(row)
     rows.append(['', 'TOTAL SCORE', '', '', str(totals['HUL']), '', '',
                  str(totals['BRITANNIA']), '', '', str(totals['DABUR'])])
-    doc.para('Table 6.15: Factor analysis of the three companies on the '
-             'FY2025-26 ratios', bold=True, align='left', before=140)
+    doc.table_title('Table 6.15: Factor analysis of the three companies on the '
+             'FY2025-26 ratios')
     doc.table(rows, [560, 2400, 1100, 700, 700, 1100, 700, 700, 1100, 700,
                      706],
               aligns=['c', 'l', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'])
